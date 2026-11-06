@@ -1,0 +1,30 @@
+name: Firebase
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: firebase-production
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test
+      - name: Deploy Hosting and Firestore rules
+        env:
+          FIREBASE_PROJECT_ID: ${{ vars.FIREBASE_PROJECT_ID }}
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: |
+          test -n "$FIREBASE_PROJECT_ID" && test -n "$FIREBASE_SERVICE_ACCOUNT" || exit 1
+          credentials="$(mktemp)"
+          trap 'rm -f "$credentials"' EXIT
+          chmod 600 "$credentials"
+          printf '%s' "$FIREBASE_SERVICE_ACCOUNT" > "$credentials"
+          GOOGLE_APPLICATION_CREDENTIALS="$credentials" npx --yes firebase-tools@14 deploy --project "$FIREBASE_PROJECT_ID" --only hosting,firestore:rules --non-interactive

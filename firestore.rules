@@ -1,0 +1,50 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function roleIs(role) {
+      return signedIn() &&
+        get(/databases/$(database)/documents/roles/$(request.auth.uid)).data.role == role;
+    }
+    function superadmin() { return roleIs('superadmin'); }
+    function mayCreate() {
+      return (superadmin() || roleIs('editor')) && request.resource.data.owner == request.auth.uid;
+    }
+    function mayManage() {
+      return superadmin() || (roleIs('editor') && resource.data.owner == request.auth.uid);
+    }
+    function sameOwner() { return request.resource.data.owner == resource.data.owner; }
+    function titleIsValid(data) {
+      return data.title is string && data.title.size() > 0 && data.title.size() <= 100;
+    }
+    function deckIsValid(data) {
+      return data.keys().hasOnly(['title', 'owner', 'cards']) && titleIsValid(data)
+        && data.cards is map && data.cards.size() > 0 && data.cards.size() <= 60;
+    }
+    function eventIsValid(data) {
+      return data.keys().hasOnly(['title', 'owner', 'startAt', 'location', 'details', 'url'])
+        && titleIsValid(data) && data.startAt is int && data.startAt > 0
+        && data.location is string && data.location.size() > 0 && data.location.size() <= 200
+        && data.details is string && data.details.size() <= 1000
+        && data.url is string && data.url.size() <= 500 && (data.url == '' || data.url.matches('https?://.+'));
+    }
+    match /roles/{uid} {
+      allow get: if signedIn() && (request.auth.uid == uid || superadmin());
+      allow create: if superadmin() && request.resource.data == {'role': 'editor'};
+      allow update: if superadmin() && resource.data.role == 'editor' && request.resource.data == {'role': 'editor'};
+      allow delete: if superadmin() && resource.data.role == 'editor';
+    }
+    match /decks/{id} {
+      allow read: if true;
+      allow create: if mayCreate() && deckIsValid(request.resource.data);
+      allow update: if mayManage() && sameOwner() && deckIsValid(request.resource.data);
+      allow delete: if mayManage();
+    }
+    match /events/{id} {
+      allow read: if true;
+      allow create: if mayCreate() && eventIsValid(request.resource.data);
+      allow update: if mayManage() && sameOwner() && eventIsValid(request.resource.data);
+      allow delete: if mayManage();
+    }
+  }
+}

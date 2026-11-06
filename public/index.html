@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Conoce Epic Splash, arma tu baraja de Pokémon TCG e imprime proxies para jugar.">
+<title>Epic Splash · Pokémon TCG</title>
+<link rel="stylesheet" href="./styles.css?v=31">
+<script type="module" src="./app.mjs?v=15"></script>
+</head>
+<body>
+<header class="top"><a class="brand" href="#inicio"><span>✦</span> EPIC SPLASH</a><nav aria-label="Principal"><a href="#inicio" aria-current="page">Inicio</a><a href="#manual">Manual</a><a href="#constructor">Deckbuilder</a><a href="#eventos">Torneos</a><a href="#administracion">Administración</a></nav></header>
+<main>
+<section class="hero" id="inicio">
+<div class="splash-scene" aria-hidden="true">
+  <img class="splash-mascot" src="./assets/splash-characters.svg?v=2" alt="" width="2022" height="1339">
+</div>
+<div class="hero-copy">
+<p class="eyebrow">FORMATO COMUNITARIO · POKÉMON TCG</p>
+<h1>Epic<br><em>Splash.</em></h1>
+<p>Cuatro Magikarp, cinco evoluciones de Eevee y una condición de victoria que cambia la partida.</p>
+<div class="actions"><a class="button primary" href="#constructor">Armar mi baraja <span aria-hidden="true">↗</span></a><a class="button" href="#manual">Leer el manual</a></div>
+</div>
+</section>
+<section id="manual" class="section" hidden>
+<header class="manual-hero">
+  <div>
+    <p class="eyebrow">01 / EL FORMATO</p>
+    <h2>Manual de<br>Epic Splash</h2>
+    <p>Aprende las reglas especiales y arma tu primera baraja.</p>
+    <div class="actions">
+      <a class="button" href="https://docs.google.com/document/d/14KDwWtBy5JZ5KgL03MMDsiQ5oVAkjDYVzfjKCrtDNT4/edit">Manual original ES ↗</a>
+      <a class="button" href="https://docs.google.com/document/d/1_YZU3WVeESPZ1tR4r9uVvFLpKcaJWBiU3GxJvIC-gtU/edit">Manual oficial EN ↗</a>
+    </div>
+  </div>
+  <img src="./assets/splash-characters.svg?v=2" width="2022" height="1339" alt="">
+</header>
+<article class="manual-document">
+  <p class="manual-kicker">01 / EN PARTIDA</p>
+  <h3>Cuatro reglas especiales</h3>
+  <p>Se juega con las reglas del formato estándar y estas cuatro adiciones.</p>
+  <ol class="visual-rules">
+    <li>
+      <div class="rule-art" aria-hidden="true">
+        <svg viewBox="0 0 160 90" width="160" height="90">
+          <g fill="#fff" stroke="#2452c4" stroke-width="2.5">
+            <rect x="32" y="20" width="34" height="49" rx="5" transform="rotate(-24 49 45)"/>
+            <rect x="47" y="15" width="34" height="49" rx="5" transform="rotate(-12 64 40)"/>
+            <rect x="94" y="20" width="34" height="49" rx="5" transform="rotate(24 111 45)"/>
+            <rect x="79" y="15" width="34" height="49" rx="5" transform="rotate(12 96 40)"/>
+            <rect x="62" y="11" width="36" height="54" rx="6" fill="#2452c4"/>
+          </g>
+          <text x="80" y="47" fill="#fff" text-anchor="middle" font-size="25" font-weight="850">5</text>
+        </svg>
+        <img class="rule-eevee" src="./assets/eeveelutions.svg" width="900" height="114" alt="">
+      </div>
+      <h4>Cinco evoluciones en mano</h4>
+      <p>Si tienes las cinco evoluciones distintas de Eevee en tu mano, muéstralas y gana de inmediato. También vale durante la preparación de la partida. Si ambos jugadores las reúnen al mismo tiempo, empatan.</p>
+    </li>
+    <li>
+      <div class="rule-art" aria-hidden="true">
+        <svg viewBox="0 0 160 90" width="160" height="90">
+          <g stroke="#2452c4" stroke-width="2.5">
+            <rect x="33" y="22" width="46" height="46" rx="9" fill="#fff" transform="rotate(-13 56 45)"/>
+            <rect x="83" y="22" width="46" height="46" rx="9" fill="#ee684e" transform="rotate(13 106 45)"/>
+          </g>
+          <circle cx="56" cy="45" r="5" fill="#2452c4"/>
+          <circle cx="106" cy="45" r="5" fill="#071426"/>
+        </svg>
+      </div>
+      <h4>Epic Splash y el doble uno</h4>
+      <p>Al atacar con Epic Splash, tira dos dados de seis caras a la vez. Si ambos muestran un uno, puedes buscar una evolución de Eevee en tu baraja y ponerla en tu mano.</p>
+    </li>
+    <li>
+      <div class="rule-art rule-mascot" aria-hidden="true">
+        <img src="./assets/magikarp-break.svg" width="765" height="1000" alt="">
+        <span>40 HP</span>
+      </div>
+      <h4>Magikarp BREAK</h4>
+      <p>Una vez por partida, puedes evolucionar un Magikarp en juego a Magikarp BREAK, siguiendo las reglas estándar de evolución. Su máximo pasa a 40 HP. Los participantes del torneo reciben un token.</p>
+    </li>
+    <li>
+      <div class="rule-art rule-mascot" aria-hidden="true">
+        <img src="./assets/psyduck.svg" width="120" height="149" alt="">
+        <span>+1 Premio</span>
+      </div>
+      <h4>Crazy Confusion</h4>
+      <p>Si dejas fuera de combate a un Pokémon oponente mientras tu Pokémon Activo está confundido, roba una carta de Premio adicional.</p>
+    </li>
+  </ol>
+
+  <p class="manual-kicker">02 / CONSTRUCCIÓN</p>
+  <h3>Así se arman las 60 cartas</h3>
+  <ul class="format-stats">
+    <li><img class="stat-mascot" src="./assets/magikarp.svg" alt="" width="470" height="535" loading="lazy"><strong>04</strong><b>Magikarp</b><p>Con el ataque Epic Splash. Ediciones XY143, AOR19, GEN22 o MCD16-4.</p></li>
+    <li><img class="stat-mascot" src="./assets/water-energy.svg" width="64" height="64" alt=""><strong>06</strong><b>Energías</b><p>Entre 3 y 6 Energías Agua básicas. Hasta 3 de las 6 pueden ser Splash Energy.</p></li>
+    <li>
+      <strong>05</strong><b>Evoluciones de Eevee</b><p>Todas distintas y de Fase 1.</p>
+      <img class="stat-eeveelutions" src="./assets/eeveelutions.svg" width="900" height="114" alt="Eevee, Sylveon, Vaporeon, Jolteon, Glaceon, Flareon, Leafeon, Umbreon y Espeon.">
+    </li>
+    <li><strong>45</strong><b>Cartas de la lista</b><p>Completa la baraja con las cartas permitidas y respeta sus límites de copias.</p></li>
+  </ul>
+  <div class="manual-cta"><p><strong>60 cartas en total</strong><br>El Deckbuilder te muestra los límites mientras armas tu lista.</p><a class="button primary" href="#constructor">Ir al Deckbuilder ↗</a></div>
+
+  <p class="manual-kicker">03 / LEGALIDAD</p>
+<details class="manual-index"><summary>Cartas permitidas</summary>
+<p>Lista del manual en español. Un asterisco indica un máximo de una copia y dos asteriscos, de dos. El Deckbuilder aplica las actualizaciones del manual oficial en inglés, incluidos los límites compartidos.</p>
+<ul class="manual-cards"><li><a href="https://pkmncards.com/card/amoonguss-silver-tempest-sit-012/">Amoonguss (SIT-12)</a>  **</li>
+<li><a href="https://pkmncards.com/card/ferrothorn-chaos-rising-cri-063/">Ferrothorn (CRI-063)</a></li>
+<li><a href="https://pkmncards.com/card/blaines-last-resort-gym-heroes-g1-105/">Blaine’s Last Resort</a>  *</li>
+<li><a href="https://pkmncards.com/card/multi-technical-machine-01-pop-series-2-p2-9/">Multi technical machine 01</a> *</li>
+<li><a href="https://pkmncards.com/card/buddy-buddy-rescue-breakthrough-bkt-135/">Buddy-Buddy Rescue</a> *</li>
+<li><a href="https://pkmncards.com/card/computer-error-wizards-black-star-promos-16/">Computer Error</a> *</li>
+<li><a href="https://pkmncards.com/card/delivery-drone-paldea-evolved-pal-178/">Delivery Drone</a> *</li>
+<li><a href="https://pkmncards.com/?s=Eneporter">Eneporter</a> *</li>
+<li><a href="https://pkmncards.com/?s=Peeking+Red+Card">Peeking Red Card</a> *</li>
+<li><a href="https://pkmncards.com/card/lass-base-set-bs-75/">Lass</a> *</li>
+<li><a href="https://pkmncards.com/card/maintenance-base-set-bs-83/">Maintenance</a> *</li>
+<li><a href="https://pkmncards.com/card/minion-of-team-rocket-gym-heroes-g1-113/">Minion of Team Rocket</a> *</li>
+<li><a href="https://pkmncards.com/card/nugget-rebel-clash-rcl-162/">Nugget</a> *</li>
+<li><a href="https://pkmncards.com/card/old-pc-darkness-ablaze-daa-164/">Old PC</a> *</li>
+<li><a href="https://pkmncards.com/card/ancient-technical-machine-rock-hidden-legends-hl-85/">Ancient Technical Machine [Rock]</a>*</li>
+<li><a href="https://pkmncards.com/card/marys-impulse-expedition-ex-142/">Mary’s Impulse</a>*</li>
+<li><a href="https://pkmncards.com/?s=Random+Receiver">Random Receiver</a> *</li>
+<li><a href="https://pkmncards.com/card/recycle-fossil-fo-61/">Recycle</a> *</li>
+<li><a href="https://pkmncards.com/card/team-rockets-evil-deeds-neo-destiny-n4-103/">Team Rocket’s Evil Deeds</a> *</li>
+<li><a href="https://pkmncards.com/card/trash-exchange-gym-heroes-g1-126/">Trash Exchange</a> *</li>
+<li><a href="https://pkmncards.com/?s=Tropical+Tidal+Wave">Tropical Tidal Wave</a> *</li>
+<li><a href="https://pkmncards.com/?s=Tropical+Wind">Tropical Wind</a> *</li>
+<li><a href="https://pkmncards.com/card/field-blower-guardians-rising-gri-125a/">Field Blower *</a> / Windstorm *</li>
+<li><a href="https://pkmncards.com/card/xtransceiver-noble-victories-nvi-96/">Xtransceiver</a> *</li>
+<li><a href="https://pkmncards.com/name/rockets-secret-experiment/">Rocket’s Secret Experiment</a> *</li>
+<li><a href="https://pkmncards.com/card/impostor-professor-oaks-invention-neo-destiny-n4-94/">Imposter Professor Oak’s Invention</a>*</li>
+<li><a href="https://pkmncards.com/?s=Buffer+Piece">Buffer Piece</a> *</li>
+<li><a href="https://pkmncards.com/card/energy-root-unseen-forces-uf-83/">Energy Root</a> *</li>
+<li><a href="https://pkmncards.com/card/dizzying-valley-phantasmal-flames-pfl-088/">Dizzying Valley</a>*</li>
+<li><a href="https://pkmncards.com/card/battle-city-black-white-promos-bwp-bw39/">Battle City</a> / Lucky Stadium *</li>
+<li><a href="https://pkmncards.com/card/chaos-gym-gym-challenge-g2-102/">Chaos Gym</a> *</li>
+<li><a href="https://pkmncards.com/?s=High+Pressure+System">High Pressure System</a> *</li>
+<li><a href="https://pkmncards.com/card/holon-circle-crystal-guardians-cg-79/">Holon Circle</a> *</li>
+<li><a href="https://pkmncards.com/card/mirage-stadium-skyridge-sk-132/">Mirage Stadium</a> *</li>
+<li><a href="https://pkmncards.com/card/parallel-city-breakthrough-bkt-145/">Parallel City</a> *</li>
+<li><a href="https://pkmncards.com/card/pokemon-league-headquarters-obsidian-flames-obf-192/">Pokémon League Headquarters</a>  *</li>
+<li><a href="https://pkmncards.com/card/power-tree-legend-maker-lm-76/">Power Tree</a> *</li>
+<li><a href="https://pkmncards.com/card/rockets-minefield-gym-gym-challenge-g2-119/">Rocket’s Minefield Gym</a> *</li>
+<li><a href="https://pkmncards.com/card/snowpoint-temple-legends-awakened-la-134/">Snowpoint Temple</a> *</li>
+<li><a href="https://pkmncards.com/?s=Apricorn+Maker">Apricorn Maker</a> *</li>
+<li><a href="https://pkmncards.com/card/cyruss-initiative-supreme-victors-sv-137/">Cyrus’s Initiative</a> *</li>
+<li><a href="https://pkmncards.com/?s=Professor+Birch%E2%80%99s+Observations">Professor Birch’s Observations</a> *</li>
+<li><a href="https://pkmncards.com/card/riley-lost-origin-lor-166/">Riley</a> *</li>
+<li><a href="https://pkmncards.com/card/arcade-game-neo-genesis-n1-83/">Arcade Game</a> **</li>
+<li><a href="https://pkmncards.com/card/blaines-gamble-gym-heroes-g1-121/">Blaine’s Gamble</a> **</li>
+<li><a href="https://pkmncards.com/card/blaines-quiz-2-gym-challenge-g2-111/">Blaine’s Quiz #2</a> **</li>
+<li><a href="https://pkmncards.com/card/card-flip-game-neo-genesis-n1-92/">Card-Flip Game</a> **</li>
+<li><a href="https://pkmncards.com/?s=Energy+Charge">Energy Charge</a> / Power Charge **</li>
+<li><a href="https://pkmncards.com/?s=Gym+Badge">Gym Badge</a> **</li>
+<li><a href="https://pkmncards.com/card/old-rod-neo-revelation-n3-64/">Old Rod</a> **</li>
+<li><a href="https://pkmncards.com/card/return-label-team-up-teu-153/">Return Label</a> **</li>
+<li><a href="https://pkmncards.com/?s=Roller+Skates">Roller Skates</a> **</li>
+<li><a href="https://pkmncards.com/card/sabrinas-psychic-control-gym-challenge-g2-121/">Sabrina’s Psychic Control</a> **</li>
+<li><a href="https://pkmncards.com/?s=VS+Seeker">VS Seeker</a> **</li>
+<li><a href="https://pkmncards.com/card/fighting-fury-belt-breakpoint-bkp-99/">Fighting Fury Belt</a> **</li>
+<li><a href="https://pkmncards.com/?s=Delinquent+">Delinquent</a> **</li>
+<li><a href="https://pkmncards.com/?s=Ilima">Ilima</a> **</li>
+<li><a href="https://pkmncards.com/?s=Ortega">Ortega</a> **</li>
+<li><a href="https://pkmncards.com/?s=Team+Rocket%E2%80%99s+Handiwork">Team Rocket’s Handiwork</a> **</li>
+<li><a href="https://pkmncards.com/card/lucian-twilight-masquerade-twm-157/">Lucian</a>  **</li>
+<li><a href="https://pkmncards.com/card/yell-horn-darkness-ablaze-daa-173/">Yell Horn</a> **</li>
+<li><a href="https://pkmncards.com/card/harlequin-white-flare-wht-163">Harlequin</a> **</li>
+<li><a href="https://pkmncards.com/?s=Energy+Restore">Energy Restore</a> **</li>
+<li><a href="https://pkmncards.com/card/picnic-basket-scarlet-violet-svi-184/">Picnic Basket</a> **</li>
+<li><a href="https://pkmncards.com/card/grabber-151-mew-162/">Grabber</a> **</li>
+<li><a href="https://pkmncards.com/card/damage-mover-shining-legends-slg-58/">Damage Mover</a></li>
+<li><a href="https://pkmncards.com/card/digger-team-rocket-ro-75/">Digger</a></li>
+<li><a href="https://pkmncards.com/?s=Dual+Ball">Dual Ball</a></li>
+<li><a href="https://pkmncards.com/card/energy-amplifier-neo-destiny-n4-98/">Energy Amplifier</a></li>
+<li><a href="https://pkmncards.com/card/erikas-perfume-gym-heroes-g1-110/">Erika’s Perfume</a> / Captivating Poké Puff</li>
+<li><a href="https://pkmncards.com/card/gambler-fossil-fo-60/">Gambler</a></li>
+<li><a href="https://pkmncards.com/card/greedy-dice-steam-siege-sts-102/">Greedy Dice</a></li>
+<li><a href="https://pkmncards.com/card/hand-scope-phantom-forces-phf-96/">Hand Scope</a></li>
+<li><a href="https://pkmncards.com/card/letter-of-encouragement-obsidian-flames-obf-189/">Letter of Encouragement</a></li>
+<li><a href="https://pkmncards.com/card/mr-fuji-fossil-fo-58/">Mr. Fuji</a></li>
+<li><a href="https://pkmncards.com/card/night-pokemon-center-diamond-pearl-dp-108/">Night Pokémon Center</a></li>
+<li><a href="https://pkmncards.com/?s=Pok%C3%A9mon+Catcher">Pokémon Catcher</a></li>
+<li><a href="https://pkmncards.com/card/surprise-box-unbroken-bonds-unb-187/">Surprise Box</a></li>
+<li><a href="https://pkmncards.com/card/tormenting-spray-burning-shadows-bus-125/">Tormenting Spray</a></li>
+<li><a href="https://pkmncards.com/?s=Wait+and+See+Hammer">Wait and See Hammer</a></li>
+<li><a href="https://pkmncards.com/card/technical-machine-devolution-paradox-rift-par-177/">Technical Machine: Devolution</a></li>
+<li><a href="https://pkmncards.com/card/counterattack-claws-neo-destiny-n4-97/">Counterattack Claws</a></li>
+<li><a href="https://pkmncards.com/card/energy-link-stormfront-sf-83/">Energy Link</a></li>
+<li><a href="https://pkmncards.com/card/mystery-plate-delta-skyridge-sk-136/">Mystery Plate (delta)</a></li>
+<li><a href="https://pkmncards.com/card/solid-rage-unseen-forces-uf-92/">Solid Rage</a></li>
+<li><a href="https://pkmncards.com/card/imakuni-generations-gen-63/">Imakuni?</a></li>
+<li><a href="https://pkmncards.com/card/billowing-smoke-darkness-ablaze-daa-158/">Billowing Smoke</a></li>
+<li><a href="https://pkmncards.com/card/brock-gym-heroes-g1-15/">Brock</a></li>
+<li><a href="https://pkmncards.com/card/meddling-memo-surging-sparks-ssp-181/">Medding Memo</a></li>
+<li><a href="https://pkmncards.com/card/chill-teaser-toy-surging-sparks-ssp-166/">Chill Teaser Toy</a></li>
+<li><a href="https://pkmncards.com/card/team-rockets-bother-bot-destined-rivals-dri-172/">Team Rocket’s Bother-Bot</a></li>
+<li><a href="https://pkmncards.com/card/energy-coin-black-bolt-blk-081">Energy Coin</a></li>
+<li><a href="https://pkmncards.com/?s=repel">Repel</a> / Pokémon Circulator</li></ul>
+</details>
+</article>
+
+</section>
+<section id="constructor" class="section" hidden>
+<p class="eyebrow">02 / DECKBUILDER</p><h2>Arma tu baraja</h2>
+<p>Elige una lista publicada o empieza desde cero. Tu borrador se guarda en este navegador.</p>
+<div class="filters"><label>Barajas preconstruidas<select id="presets"><option value="">Selecciona una baraja</option></select></label><button id="load-preset" disabled>Cargar copia</button></div>
+<p id="public-status" class="muted" role="status"></p>
+<div class="builder">
+<div><div class="filters"><label>Buscar carta<input id="search" type="search" placeholder="Nombre o código"></label><label>Categoría<select id="category"><option value="">Todas</option><option>Pokémon</option><option>Energías</option><option>Entrenadores</option></select></label><label>Idioma de cartas<select id="language"><option value="es">Español</option><option value="en">English</option></select></label></div><p id="catalog-status" role="status">Cargando catálogo…</p><div id="catalog"></div><button id="more" hidden>Mostrar más</button></div>
+<aside><div class="deck-head"><h3>Mi baraja</h3><strong id="total">0 / 60</strong></div><ul id="requirements"></ul><button id="add-basic-water" type="button" hidden>Añadir Agua básica</button><div id="deck"></div>
+<label class="print-token"><input id="include-break-token" type="checkbox"><span>Incluir token de Magikarp BREAK</span></label>
+<div class="actions"><button id="print" class="primary" disabled>Imprimir proxies</button><button id="clear">Vaciar</button></div><p id="print-status" role="status" class="muted">Imprime proxies o el token al 100 %, sin encabezados ni pies de página.</p></aside>
+</div>
+</section>
+<section id="eventos" class="section" hidden><p class="eyebrow">03 / COMUNIDAD</p><h2>Próximos torneos</h2><div id="events" class="rule-grid" aria-live="polite"></div></section>
+<section id="administracion" class="section" hidden><p class="eyebrow">04 / EQUIPO</p><h2>Administración</h2><div id="admin"></div></section>
+</main>
+<footer><strong>EPIC SPLASH</strong><span>Proyecto comunitario de Pokémon TCG · Datos de <a href="https://tcgdex.dev/">TCGdex</a> · Imágenes adicionales de <a href="https://limitlesstcg.com/cards">Limitless TCG</a> y <a href="https://www.wikidex.net/">WikiDex</a></span></footer>
+<dialog id="card-detail" aria-labelledby="card-detail-title">
+  <div class="card-detail-bar">
+    <span class="eyebrow">DETALLE DE CARTA</span>
+    <button id="card-detail-close" type="button" autofocus>Cerrar <span aria-hidden="true">×</span></button>
+  </div>
+  <div class="card-detail-layout">
+    <div id="card-detail-image"></div>
+    <div class="card-detail-copy">
+      <h3 id="card-detail-title"></h3>
+      <p id="card-detail-meta" class="muted"></p>
+      <p id="card-detail-language" class="muted"></p>
+      <p id="card-detail-source"></p>
+      <p id="card-detail-status" role="status"></p>
+      <button id="card-detail-add" class="primary" type="button">Añadir a mi baraja</button>
+    </div>
+  </div>
+</dialog>
+<div id="print-sheet" aria-hidden="true"></div>
+</body>
+</html>

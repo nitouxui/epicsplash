@@ -1,0 +1,710 @@
+[
+  {
+    "name": "Amoonguss",
+    "group": "Pokémon",
+    "key": "Amoonguss (SIT-12) **",
+    "max": 2,
+    "source": "https://pkmncards.com/card/amoonguss-silver-tempest-sit-012/",
+    "exact": [
+      "swsh12-012",
+      "swsh12-12"
+    ]
+  },
+  {
+    "name": "Ferrothorn",
+    "group": "Pokémon",
+    "key": "Ferrothorn (CRI-63) *",
+    "max": 1,
+    "source": null,
+    "exact": [
+      "me04-063",
+      "me04-63"
+    ]
+  },
+  {
+    "name": "Arcade Game",
+    "group": "Objeto",
+    "key": "Arcade Game **",
+    "max": 2,
+    "source": "https://pkmncards.com/card/arcade-game-neo-genesis-n1-83/"
+  },
+  {
+    "name": "Blaine’s Gamble",
+    "group": "Objeto",
+    "key": "Blaine’s Gamble **",
+    "max": 2,
+    "source": "https://pkmncards.com/card/blaines-gamble-gym-heroes-g1-121/"
+  },
+  {
+    "name": "Blaine’s Last Resort",
+    "group": "Objeto",
+    "key": "Blaine’s Last Resort *",
+    "max": 1,
+    "source": "https://pkmncards.com/card/blaines-last-resort-gym-heroes-g1-105/"
+  },
+  {
+    "name": "Blaine’s Quiz #2",
+    "group": "Objeto",
+    "key": "Blaine’s Quiz #2 **",
+    "max": 2,
+    "source": "https://pkmncards.com/card/blaines-quiz-2-gym-challenge-g2-111/"
+  },
+  {
+    "name": "Brock",
+    "group": "Objeto",
+    "key": "Brock",
+    "max": 4,
+    "source": "https://pkmncards.com/card/brock-gym-heroes-g1-15/"
+  },
+  {
+    "name": "Buddy-Buddy Rescue",
+    "group": "Objeto",
+    "key": "Buddy-Buddy Rescue *",
+    "max": 1,
+    "source": "https://pkmncards.com/card/buddy-buddy-rescue-breakthrough-bkt-135/"
+  },
+  {
+    "name": "Card-Flip Game",
+    "group": "Objeto",
+    "key": "Card-Flip Game **",
+    "max": 2,
+    "source": "https://pkmncards.com/card/card-flip-game-neo-genesis-n1-92/"
+  },
+  {
+    "name": "Chill Teaser Toy",
+    "group": "Objeto",
+    "key": "Chill Teaser Toy",
+    "max": 4,
+    "source": "https://pkmncards.com/card/chill-teaser-toy-surging-sparks-ssp-166/"
+  },
+  {
+    "name": "Computer Error",
+    "group": "Objeto",
+    "key": "Computer Error *",
+    "max": 1,
+    "source": "https://pkmncards.com/card/computer-error-wizards-black-star-promos-16/"
+  },
+  {
+    "name": "Damage Mover",
+    "group": "Objeto",
+    "key": "Damage Mover",
+    "max": 4,
+    "source": "https://pkmncards.com/card/damage-mover-shining-legends-slg-58/"
+  },
+  {
+    "name": "Delivery Drone",
+    "group": "Objeto",
+    "key": "Delivery Drone *",
+    "max": 1,
+    "source": "https://pkmncards.com/card/delivery-drone-paldea-evolved-pal-178/"
+  },
+  {
+    "name": "Digger",
+    "group": "Objeto",
+    "key": "Digger",
+    "max": 4,
+    "source": "https://pkmncards.com/card/digger-team-rocket-ro-75/"
+  },
+  {
+    "name": "Dual Ball",
+    "group": "Objeto",
+    "key": "Dual Ball",
+    "max": 4,
+    "source": "https://pkmncards.com/?s=Dual+Ball"
+  },
+  {
+    "name": "Eneporter",
+    "group": "Objeto",
+    "key": "Eneporter *",
+    "max": 1,
+    "source": "https://pkmncards.com/?s=Eneporter"
+  },
+  {
+    "name": "Energy Amplifier",
+    "group": "Objeto",
+    "key": "Energy Amplifier",
+    "max": 4,
+    "source": "https://pkmncards.com/card/energy-amplifier-neo-destiny-n4-98/"
+  },
+  {
+    "name": "Energy Charge",
+    "group": "Objeto",
+    "key": "Energy Charge / Power Charge **",
+    "max": 2,
+    "source": "https://pkmncards.com/?s=Energy+Charge"
+  },
+  {
+    "name": "Power Charge",
+    "group": "Objeto",
+    "key": "Energy Charge / Power Charge **",
+    "max": 2,
+    "source": "https://pkmncards.com/card/power-charge-expedition-ex-147/"
+  },
+  {
+    "name": "Energy Coin",
+    "group": "Objeto",
+    "key": "Energy Coin",
+    "max": 4,
+    "source": "https://pkmncards.com/card/energy-coin-black-bolt-blk-081"
+  },
+  {
+    "name": "Energy Restore",
+    "group": "Objeto",
+    "key": "Energy Restore **",
+    "max": 2,
+    "source": "https://pkmncards.com/?s=Energy+Restore"
+  },
+  {
+    "name": "Erika’s Perfume",
+    "group": "Objeto",
+    "key": "Erika’s Perfume / Captivating Poké Puff",
+    "max": 4,
+    "source": "https://pkmncards.com/card/erikas-perfume-gym-heroes-g1-110/"
+  },
+  {
+    "name": "Captivating Poké Puff",
+    "group": "Objeto",
+    "key": "Erika’s Perfume / Captivating Poké Puff",
+    "max": 4,
+    "source": "https://pkmncards.com/card/captivating-poke-puff-steam-siege-sts-99/"
+  },
+  {
+    "name": "Grabber",
+    "group": "Objeto",
+    "key": "Grabber **",
+    "max": 2,
+    "source": "https://pkmncards.com/card/grabber-151-mew-162/"
+  },
+  {
+    "name": "Gambler",
+    "group": "Objeto",
+    "key": "Gambler",
+    "max": 4,
+    "source": "https://pkmncards.com/card/gambler-fossil-fo-60/"
+  },
+  {
+    "name": "Greedy Dice",
+    "group": "Objeto",
+    "key": "Greedy Dice",
+    "max": 4,
+    "source": "https://pkmncards.com/card/greedy-dice-steam-siege-sts-102/"
+  },
+  {
+    "name": "Gym Badge",
+    "group": "Objeto",
+    "key": "Gym Badge **",
+    "max": 2,
+    "source": "https://pkmncards.com/?s=Gym+Badge"
+  },
+  {
+    "name": "Hand Scope",
+    "group": "Objeto",
+    "key": "Hand Scope",
+    "max": 4,
+    "source": "https://pkmncards.com/card/hand-scope-phantom-forces-phf-96/"
+  },
+  {
+    "name": "Impostor Professor Oak’s Invention",
+    "group": "Objeto",
+    "key": "Imposter Professor Oak’s Invention *",
+    "max": 1,
+    "source": "https://pkmncards.com/card/impostor-professor-oaks-invention-neo-destiny-n4-94/"
+  },
+  {
+    "name": "Lass",
+    "group": "Objeto",
+    "key": "Lass *",
+    "max": 1,
+    "source": "https://pkmncards.com/card/lass-base-set-bs-75/"
+  },
+  {
+    "name": "Letter of Encouragement",
+    "group": "Objeto",
+    "key": "Letter of Encouragement",
+    "max": 4,
+    "source": "https://pkmncards.com/card/letter-of-encouragement-obsidian-flames-obf-189/"
+  },
+  {
+    "name": "Maintenance",
+    "group": "Objeto",
+    "key": "Maintenance *",
+    "max": 1,
+    "source": "https://pkmncards.com/card/maintenance-base-set-bs-83/"
+  },
+  {
+    "name": "Meddling Memo",
+    "group": "Objeto",
+    "key": "Meddling Memo",
+    "max": 4,
+    "source": "https://pkmncards.com/card/meddling-memo-surging-sparks-ssp-181/"
+  },
+  {
+    "name": "Minion of Team Rocket",
+    "group": "Objeto",
+    "key": "Minion of Team Rocket *",
+    "max": 1,
+    "source": "https://pkmncards.com/card/minion-of-team-rocket-gym-heroes-g1-113/"
+  },
+  {
+    "name": "Mr. Fuji",
+    "group": "Objeto",
+    "key": "Mr. Fuji",
+    "max": 4,
+    "source": "https://pkmncards.com/card/mr-fuji-fossil-fo-58/"
+  },
+  {
+    "name": "Night Pokémon Center",
+    "group": "Objeto",
+    "key": "Night Pokémon Center",
+    "max": 4,
+    "source": "https://pkmncards.com/card/night-pokemon-center-diamond-pearl-dp-108/"
+  },
+  {
+    "name": "Nugget",
+    "group": "Objeto",
+    "key": "Nugget *",
+    "max": 1,
+    "source": "https://pkmncards.com/card/nugget-rebel-clash-rcl-162/"
+  },
+  {
+    "name": "Old PC",
+    "group": "Objeto",
+    "key": "Old PC *",
+    "max": 1,
+    "source": "https://pkmncards.com/card/old-pc-darkness-ablaze-daa-164/"
+  },
+  {
+    "name": "Old Rod",
+    "group": "Objeto",
+    "key": "Old Rod **",
+    "max": 2,
+    "source": "https://pkmncards.com/card/old-rod-neo-revelation-n3-64/"
+  },
+  {
+    "name": "Peeking Red Card",
+    "group": "Objeto",
+    "key": "Peeking Red Card *",
+    "max": 1,
+    "source": "https://pkmncards.com/?s=Peeking+Red+Card"
+  },
+  {
+    "name": "Picnic Basket",
+    "group": "Objeto",
+    "key": "Picnic Basket **",
+    "max": 2,
+    "source": "https://pkmncards.com/card/picnic-basket-scarlet-violet-svi-184/"
+  },
+  {
+    "name": "Pokémon Reversal",
+    "group": "Objeto",
+    "key": "Pokémon Reversal / Pokémon Catcher",
+    "max": 4,
+    "source": null
+  },
+  {
+    "name": "Pokémon Catcher",
+    "group": "Objeto",
+    "key": "Pokémon Reversal / Pokémon Catcher",
+    "max": 4,
+    "source": "https://pkmncards.com/?s=Pok%C3%A9mon+Catcher"
+  },
+  {
+    "name": "Random Receiver",
+    "group": "Objeto",
+    "key": "Random Receiver *",
+    "max": 1,
+    "source": "https://pkmncards.com/?s=Random+Receiver"
+  },
+  {
+    "name": "Recycle",
+    "group": "Objeto",
+    "key": "Recycle *",
+    "max": 1,
+    "source": "https://pkmncards.com/card/recycle-fossil-fo-61/"
+  },
+  {
+    "name": "Repel",
+    "group": "Objeto",
+    "key": "Repel / Pokémon Circulator",
+    "max": 4,
+    "source": "https://pkmncards.com/?s=repel"
+  },
+  {
+    "name": "Pokémon Circulator",
+    "group": "Objeto",
+    "key": "Repel / Pokémon Circulator",
+    "max": 4,
+    "source": "https://pkmncards.com/card/pokemon-circulator-unleashed-ul-81"
+  },
+  {
+    "name": "Return Label",
+    "group": "Objeto",
+    "key": "Return Label **",
+    "max": 2,
+    "source": "https://pkmncards.com/card/return-label-team-up-teu-153/"
+  },
+  {
+    "name": "Rocket’s Secret Experiment",
+    "group": "Objeto",
+    "key": "Rocket’s Secret Experiment *",
+    "max": 1,
+    "source": "https://pkmncards.com/name/rockets-secret-experiment/"
+  },
+  {
+    "name": "Roller Skates",
+    "group": "Objeto",
+    "key": "Roller Skates **",
+    "max": 2,
+    "source": "https://pkmncards.com/?s=Roller+Skates"
+  },
+  {
+    "name": "Sabrina’s Psychic Control",
+    "group": "Objeto",
+    "key": "Sabrina’s Psychic Control **",
+    "max": 2,
+    "source": "https://pkmncards.com/card/sabrinas-psychic-control-gym-challenge-g2-121/"
+  },
+  {
+    "name": "Surprise Box",
+    "group": "Objeto",
+    "key": "Surprise Box",
+    "max": 4,
+    "source": "https://pkmncards.com/card/surprise-box-unbroken-bonds-unb-187/"
+  },
+  {
+    "name": "Team Rocket’s Bother-Bot",
+    "group": "Objeto",
+    "key": "Team Rocket’s Bother-Bot",
+    "max": 4,
+    "source": "https://pkmncards.com/card/team-rockets-bother-bot-destined-rivals-dri-172/"
+  },
+  {
+    "name": "Team Rocket’s Evil Deeds",
+    "group": "Objeto",
+    "key": "Team Rocket’s Evil Deeds *",
+    "max": 1,
+    "source": "https://pkmncards.com/card/team-rockets-evil-deeds-neo-destiny-n4-103/"
+  },
+  {
+    "name": "Tormenting Spray",
+    "group": "Objeto",
+    "key": "Tormenting Spray",
+    "max": 4,
+    "source": "https://pkmncards.com/card/tormenting-spray-burning-shadows-bus-125/"
+  },
+  {
+    "name": "Trash Exchange",
+    "group": "Objeto",
+    "key": "Trash Exchange *",
+    "max": 1,
+    "source": "https://pkmncards.com/card/trash-exchange-gym-heroes-g1-126/"
+  },
+  {
+    "name": "Tropical Tidal Wave",
+    "group": "Objeto",
+    "key": "Tropical Tidal Wave *",
+    "max": 1,
+    "source": "https://pkmncards.com/?s=Tropical+Tidal+Wave"
+  },
+  {
+    "name": "Tropical Wind",
+    "group": "Objeto",
+    "key": "Tropical Wind *",
+    "max": 1,
+    "source": "https://pkmncards.com/?s=Tropical+Wind"
+  },
+  {
+    "name": "VS Seeker",
+    "group": "Objeto",
+    "key": "VS Seeker **",
+    "max": 2,
+    "source": "https://pkmncards.com/?s=VS+Seeker"
+  },
+  {
+    "name": "Wait and See Hammer",
+    "group": "Objeto",
+    "key": "Wait and See Hammer",
+    "max": 4,
+    "source": "https://pkmncards.com/?s=Wait+and+See+Hammer"
+  },
+  {
+    "name": "Windstorm",
+    "group": "Objeto",
+    "key": "Windstorm / Field Blower *",
+    "max": 1,
+    "source": null
+  },
+  {
+    "name": "Field Blower",
+    "group": "Objeto",
+    "key": "Windstorm / Field Blower *",
+    "max": 1,
+    "source": null
+  },
+  {
+    "name": "Xtransceiver",
+    "group": "Objeto",
+    "key": "Xtransceiver *",
+    "max": 1,
+    "source": "https://pkmncards.com/card/xtransceiver-noble-victories-nvi-96/"
+  },
+  {
+    "name": "Yell Horn",
+    "group": "Objeto",
+    "key": "Yell Horn / Dark Bell **",
+    "max": 2,
+    "source": "https://pkmncards.com/card/yell-horn-darkness-ablaze-daa-173/"
+  },
+  {
+    "name": "Dark Bell",
+    "group": "Objeto",
+    "key": "Yell Horn / Dark Bell **",
+    "max": 2,
+    "source": null
+  },
+  {
+    "name": "Ancient Technical Machine [Rock]",
+    "group": "Herramienta",
+    "key": "Ancient Technical Machine [Rock]",
+    "max": 4,
+    "source": "https://pkmncards.com/card/ancient-technical-machine-rock-hidden-legends-hl-85/"
+  },
+  {
+    "name": "Billowing Smoke",
+    "group": "Herramienta",
+    "key": "Billowing Smoke",
+    "max": 4,
+    "source": "https://pkmncards.com/card/billowing-smoke-darkness-ablaze-daa-158/"
+  },
+  {
+    "name": "Buffer Piece",
+    "group": "Herramienta",
+    "key": "Buffer Piece *",
+    "max": 1,
+    "source": "https://pkmncards.com/?s=Buffer+Piece"
+  },
+  {
+    "name": "Counterattack Claws",
+    "group": "Herramienta",
+    "key": "Counterattack Claws",
+    "max": 4,
+    "source": "https://pkmncards.com/card/counterattack-claws-neo-destiny-n4-97/"
+  },
+  {
+    "name": "Energy Link",
+    "group": "Herramienta",
+    "key": "Energy Link",
+    "max": 4,
+    "source": "https://pkmncards.com/card/energy-link-stormfront-sf-83/"
+  },
+  {
+    "name": "Energy Root",
+    "group": "Herramienta",
+    "key": "Energy Root *",
+    "max": 1,
+    "source": "https://pkmncards.com/card/energy-root-unseen-forces-uf-83/"
+  },
+  {
+    "name": "Fighting Fury Belt",
+    "group": "Herramienta",
+    "key": "Fighting Fury Belt **",
+    "max": 2,
+    "source": "https://pkmncards.com/card/fighting-fury-belt-breakpoint-bkp-99/"
+  },
+  {
+    "name": "Multi Technical Machine 01",
+    "group": "Herramienta",
+    "key": "Multi Technical Machine 01 *",
+    "max": 1,
+    "source": "https://pkmncards.com/card/multi-technical-machine-01-pop-series-2-p2-9/"
+  },
+  {
+    "name": "Mystery Plate δ",
+    "group": "Herramienta",
+    "key": "Mystery Plate (delta)",
+    "max": 4,
+    "source": "https://pkmncards.com/card/mystery-plate-delta-skyridge-sk-136/"
+  },
+  {
+    "name": "Solid Rage",
+    "group": "Herramienta",
+    "key": "Solid Rage",
+    "max": 4,
+    "source": "https://pkmncards.com/card/solid-rage-unseen-forces-uf-92/"
+  },
+  {
+    "name": "Technical Machine: Devolution",
+    "group": "Herramienta",
+    "key": "Technical Machine: Devolution",
+    "max": 4,
+    "source": "https://pkmncards.com/card/technical-machine-devolution-paradox-rift-par-177/"
+  },
+  {
+    "name": "Battle City",
+    "group": "Estadio",
+    "key": "Battle City / Lucky Stadium *",
+    "max": 1,
+    "source": "https://pkmncards.com/card/battle-city-black-white-promos-bwp-bw39/"
+  },
+  {
+    "name": "Lucky Stadium",
+    "group": "Estadio",
+    "key": "Battle City / Lucky Stadium *",
+    "max": 1,
+    "source": "https://pkmncards.com/?s=Lucky+Stadium"
+  },
+  {
+    "name": "Chaos Gym",
+    "group": "Estadio",
+    "key": "Chaos Gym *",
+    "max": 1,
+    "source": "https://pkmncards.com/card/chaos-gym-gym-challenge-g2-102/"
+  },
+  {
+    "name": "Dizzying Valley",
+    "group": "Estadio",
+    "key": "Dizzying Valley *",
+    "max": 1,
+    "source": "https://pkmncards.com/card/dizzying-valley-phantasmal-flames-pfl-088/"
+  },
+  {
+    "name": "High Pressure System",
+    "group": "Estadio",
+    "key": "High Pressure System *",
+    "max": 1,
+    "source": "https://pkmncards.com/?s=High+Pressure+System"
+  },
+  {
+    "name": "Holon Circle",
+    "group": "Estadio",
+    "key": "Holon Circle *",
+    "max": 1,
+    "source": "https://pkmncards.com/card/holon-circle-crystal-guardians-cg-79/"
+  },
+  {
+    "name": "Mirage Stadium",
+    "group": "Estadio",
+    "key": "Mirage Stadium *",
+    "max": 1,
+    "source": "https://pkmncards.com/card/mirage-stadium-skyridge-sk-132/"
+  },
+  {
+    "name": "Parallel City",
+    "group": "Estadio",
+    "key": "Parallel City *",
+    "max": 1,
+    "source": "https://pkmncards.com/card/parallel-city-breakthrough-bkt-145/"
+  },
+  {
+    "name": "Pokémon League Headquarters",
+    "group": "Estadio",
+    "key": "Pokémon League Headquarters  *",
+    "max": 1,
+    "source": "https://pkmncards.com/card/pokemon-league-headquarters-obsidian-flames-obf-192/"
+  },
+  {
+    "name": "Power Tree",
+    "group": "Estadio",
+    "key": "Power Tree *",
+    "max": 1,
+    "source": "https://pkmncards.com/card/power-tree-legend-maker-lm-76/"
+  },
+  {
+    "name": "Rocket’s Minefield Gym",
+    "group": "Estadio",
+    "key": "Rocket’s Minefield Gym *",
+    "max": 1,
+    "source": "https://pkmncards.com/card/rockets-minefield-gym-gym-challenge-g2-119/"
+  },
+  {
+    "name": "Snowpoint Temple",
+    "group": "Estadio",
+    "key": "Snowpoint Temple *",
+    "max": 1,
+    "source": "https://pkmncards.com/card/snowpoint-temple-legends-awakened-la-134/"
+  },
+  {
+    "name": "Apricorn Maker",
+    "group": "Partidario",
+    "key": "Apricorn Maker *",
+    "max": 1,
+    "source": "https://pkmncards.com/?s=Apricorn+Maker"
+  },
+  {
+    "name": "Cyrus’s Initiative",
+    "group": "Partidario",
+    "key": "Cyrus’s Initiative *",
+    "max": 1,
+    "source": "https://pkmncards.com/card/cyruss-initiative-supreme-victors-sv-137/"
+  },
+  {
+    "name": "Delinquent",
+    "group": "Partidario",
+    "key": "Delinquent **",
+    "max": 2,
+    "source": "https://pkmncards.com/?s=Delinquent+"
+  },
+  {
+    "name": "Harlequin",
+    "group": "Partidario",
+    "key": "Harlequin **",
+    "max": 2,
+    "source": "https://pkmncards.com/card/harlequin-white-flare-wht-163"
+  },
+  {
+    "name": "Ilima",
+    "group": "Partidario",
+    "key": "Ilima **",
+    "max": 2,
+    "source": "https://pkmncards.com/?s=Ilima"
+  },
+  {
+    "name": "Imakuni?",
+    "group": "Partidario",
+    "key": "Imakuni?",
+    "max": 4,
+    "source": "https://pkmncards.com/card/imakuni-generations-gen-63/"
+  },
+  {
+    "name": "Lucian",
+    "group": "Partidario",
+    "key": "Lucian **",
+    "max": 2,
+    "source": "https://pkmncards.com/card/lucian-twilight-masquerade-twm-157/"
+  },
+  {
+    "name": "Mary’s Impulse",
+    "group": "Partidario",
+    "key": "Mary’s Impulse *",
+    "max": 1,
+    "source": "https://pkmncards.com/card/marys-impulse-expedition-ex-142/"
+  },
+  {
+    "name": "Ortega",
+    "group": "Partidario",
+    "key": "Ortega **",
+    "max": 2,
+    "source": "https://pkmncards.com/?s=Ortega"
+  },
+  {
+    "name": "Professor Birch’s Observations",
+    "group": "Partidario",
+    "key": "Professor Birch’s Observations *",
+    "max": 1,
+    "source": "https://pkmncards.com/?s=Professor+Birch%E2%80%99s+Observations"
+  },
+  {
+    "name": "Riley",
+    "group": "Partidario",
+    "key": "Riley *",
+    "max": 1,
+    "source": "https://pkmncards.com/card/riley-lost-origin-lor-166/"
+  },
+  {
+    "name": "Team Rocket’s Handiwork",
+    "group": "Partidario",
+    "key": "Team Rocket’s Handiwork **",
+    "max": 2,
+    "source": "https://pkmncards.com/?s=Team+Rocket%E2%80%99s+Handiwork"
+  }
+]

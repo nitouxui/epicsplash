@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 114">
+  <title>Eevee y sus ocho evoluciones</title>
+  <desc>Emblemas redibujados en SVG a partir de la referencia de Noa Koronet, 2014.</desc>
+  <defs>
+    <path id="ears" d="M36 52C19 45 8 29 3 10c20 7 34 20 41 35m20 7c17-7 28-23 33-42-20 7-34 20-41 35"/>
+    <path id="inner" d="M35 46C23 40 14 27 10 18c14 6 26 17 29 25m26 3c12-6 21-19 25-28-14 6-26 17-29 25"/>
+    <path id="face" d="M27 56q1-17 23-18 22 1 23 18v16q0 21-23 25-23-4-23-25z"/>
+  </defs>
+  <g transform="translate(0 4)">
+    <use href="#ears" fill="#d38e53"/><use href="#inner" fill="#783f26"/>
+    <path fill="#ffebcb" d="M32 64q-18 5-21 21l7-4-1 13 8-5 2 10 7-4 16 13 16-13 7 4 2-10 8 5-1-13 7 4q-3-16-21-21z"/>
+    <path fill="#d38e53" d="m27 57 3-13 4 3 4-9 5 6 7-9 6 8 6-5 4 9 5-3 2 13v12q0 22-23 22T27 69z"/>
+  </g>
+  <g transform="translate(100 3)">
+    <path fill="#f36c9f" d="M38 51C12 42 17 13 29 3c15 7 21 27 17 45m16 3C88 42 83 13 71 3 56 10 50 30 54 48"/>
+    <path fill="#3188b4" d="M36 45q-15-9-8-27 10 10 8 27m28 0q15-9 8-27-10 10-8 27"/>
+    <path fill="none" stroke="#f5bad4" stroke-width="8" d="M37 61C14 44 13 31 24 26m38 33c31 12 33 44-8 44"/>
+    <path fill="#50b9df" d="m17 30 14-13 5 7 8-1-4 8-10-3-10 7zm44 77-14-8-9 3 7 5-7 3 12 2z"/>
+    <path fill="#f8f6ff" d="M27 57q11-13 23-2 12-11 23 2 11 14-4 31-19 23-38 0-15-17-4-31z"/>
+    <path fill="#f36c9f" d="m22 61-8-17 22 9 13 11 14-11 23-9-8 17-19 10-10-5-9 5z"/>
+  </g>
+  <g transform="translate(200 3)">
+    <path fill="#f2f4ff" d="m50 26 11 14 17-3 1 16 15 8-10 11 8 12-17 4-5 15-13-7-7 11-7-11-13 7-5-15-17-4 8-12-10-11 15-8 1-16 17 3z"/>
+    <path fill="#176684" d="M27 49Q14 23 1 20q25 1 42 20l4-8 3-31 4 31 4 8Q75 21 99 20 85 28 73 49z"/>
+    <path fill="#fff1bd" d="M31 48C21 33 10 25 2 21q14 18 15 35l21-1m31-7c10-15 21-23 29-27q-14 18-15 35l-21-1"/>
+    <path fill="#65cfe7" d="m26 50 14-13 10 6 10-6 14 13v16q0 19-24 25-24-6-24-25z"/>
+  </g>
+  <g transform="translate(300 2)">
+    <use href="#ears" fill="#ffdf00"/><use href="#inner" fill="#17223a"/>
+    <path fill="#ffdf00" d="m25 50-9-5 14 1-6-11 13 7 2-14 7 11 4-14 5 14 9-10v14l13-7-5 11 14-2-11 8 5 16 8 8-13 1 7 10-13-2 3 10-11-6q-11 20-22 0l-11 6 3-10-13 2 7-10-13-1 8-8z"/>
+  </g>
+  <g transform="translate(400 3)">
+    <use href="#ears" fill="#b5efff"/><use href="#inner" fill="#1688b4"/>
+    <path fill="#329fca" d="M29 53Q10 69 6 96l13 10Q24 76 39 62m32-9q19 16 23 43l-13 10Q76 76 61 62"/>
+    <use href="#face" fill="#b5efff"/>
+    <path fill="#189ec8" d="m25 61 9-18 7-8 5 4 4-7 4 7 5-4 7 8 9 18q-25 25-50 0z"/>
+  </g>
+  <g transform="translate(500 4)">
+    <use href="#ears" fill="#fa5a23"/><use href="#inner" fill="#233141"/>
+    <use href="#face" fill="#f94a1b"/>
+    <path fill="#ffe72c" d="M41 64c-16-11 1-20 5-26 4-4 6-7 4-14 11 3 17 11 15 18 8-2 8-8 8-8 7 22-16 44-32 30z"/>
+  </g>
+  <g transform="translate(600 4)">
+    <use href="#ears" fill="#64ac38"/><use href="#inner" fill="#84613a"/>
+    <path fill="#64ac38" d="M44 48c-4-9-6-17-1-25 3-5 2-12-3-15 17 0 25 9 21 20-3 8-11 9-10 23z"/>
+    <path fill="#f8e8a0" d="m27 54-9-5 14 1-3-8 12 4 9-9 9 9 12-4-3 8 14-1-9 5v17q0 21-23 27-23-6-23-27z"/>
+  </g>
+  <g transform="translate(700 3)">
+    <use href="#ears" fill="#262c37"/>
+    <path fill="none" stroke="#ffe229" stroke-width="5" d="M19 32q6-5 13-4m49 4q-6-5-13-4"/>
+    <use href="#face" fill="#262c37"/>
+    <ellipse cx="50" cy="59" rx="6" ry="9" fill="none" stroke="#ffe229" stroke-width="4"/>
+  </g>
+  <g transform="translate(800 4)">
+    <path fill="#bd89e2" d="M37 55C19 48 5 37 1 19q17 14 42 18m20 18c18-7 32-18 36-36Q82 33 57 37"/>
+    <path fill="#7b61b9" d="M35 48Q16 39 8 28l33 13m24 7q19-9 27-20L59 41"/>
+    <path fill="#bd89e2" d="M29 59q-9 4-16 15l14-3-1 6 10-5q5 13 14 16 9-3 14-16l10 5-1-6 14 3q-7-11-16-15v-7q0-16-21-16T29 52z"/>
+    <circle cx="50" cy="54" r="4.5" fill="#d1105e"/>
+  </g>
+</svg>

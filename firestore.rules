@@ -30,6 +30,7 @@ service cloud.firestore {
     }
     match /roles/{uid} {
       allow get: if signedIn() && (request.auth.uid == uid || superadmin());
+      allow list: if superadmin() && resource.data.role == 'editor';
       allow create: if superadmin() && request.resource.data == {'role': 'editor'};
       allow update: if superadmin() && resource.data.role == 'editor' && request.resource.data == {'role': 'editor'};
       allow delete: if superadmin() && resource.data.role == 'editor';

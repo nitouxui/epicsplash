@@ -26,6 +26,7 @@ export async function connect(builder) {
     let user;
     let role;
     let roleListener;
+    let editorsListener;
     let authVersion = 0;
 
     const isSuper = () => role === 'superadmin';
@@ -144,6 +145,8 @@ export async function connect(builder) {
     }
 
     function renderAdmin() {
+      editorsListener?.();
+      editorsListener = undefined;
       const message = el('p', null, {id: 'admin-message', role: 'status'});
       $('public-builder').append($('deck-builder'));
       admin.replaceChildren(message);
@@ -190,11 +193,28 @@ export async function connect(builder) {
           await db.setDoc(target(), {role: 'editor'});
           message.textContent = 'Acceso concedido.';
         });
-        form.append(el('button', 'Conceder acceso', {type: 'submit'}), button('Revocar acceso', run(async () => {
-          await db.deleteDoc(target());
-          message.textContent = 'Acceso revocado.';
-        })));
-        addPanel('Usuarios', form);
+        form.append(el('button', 'Conceder acceso', {type: 'submit'}));
+        const list = el('ul', null, {'aria-label': 'Usuarios con acceso'});
+        const listStatus = el('p', 'Cargando usuarios…', {role: 'status'});
+        const panel = el('section', null, {class: 'manager'});
+        panel.append(form, el('h4', 'Usuarios con acceso'), listStatus, list);
+        addPanel('Usuarios', panel);
+        const editors = db.query(collection('roles'), db.where('role', '==', 'editor'));
+        editorsListener = db.onSnapshot(editors, result => {
+          listStatus.textContent = result.empty ? 'Aún no hay editores con acceso.' : '';
+          list.replaceChildren(...result.docs.map(({id}) => {
+            const row = el('li', null, {class: 'deck-row'});
+            row.append(el('span', id), button('Revocar acceso', run(async () => {
+              if (!confirm('¿Revocar el acceso de ' + id + '?')) return;
+              await db.deleteDoc(ref('roles', id));
+              message.textContent = 'Acceso revocado.';
+            })));
+            return row;
+          }));
+        }, () => {
+          list.replaceChildren();
+          listStatus.textContent = 'No se pudieron cargar los usuarios con acceso.';
+        });
       }
       admin.append(controls, ...panels.map(({panel}) => panel));
     }

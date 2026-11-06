@@ -6,12 +6,14 @@ import { spanishImageBackups } from './spanish-image-backups.mjs?v=2';
 
 const navigation = [...document.querySelectorAll('nav a')];
 const routes = navigation.map(link => link.getAttribute('href'));
-const pages = routes.map(route => $(route.slice(1)));
+const adminPage = $('administracion');
+const isAdminPath = window.location.pathname === '/admin';
+const pages = [...routes.map(route => $(route.slice(1))), adminPage];
 let activePage;
 
 function showPage() {
   const index = routes.indexOf(window.location.hash);
-  const current = Math.max(0, index);
+  const current = isAdminPath ? pages.indexOf(adminPage) : Math.max(0, index);
   if (current === activePage) return;
   if ($('card-detail').open) $('card-detail').close();
   if (activePage !== undefined) {
@@ -31,6 +33,11 @@ function showPage() {
 
 window.addEventListener('hashchange', showPage);
 showPage();
+if (isAdminPath) {
+  for (const link of document.querySelectorAll('.top a[href^="#"]')) {
+    link.setAttribute('href', '/' + link.getAttribute('href'));
+  }
+}
 
 let cards = new Map();
 let ready = false;

@@ -112,9 +112,11 @@ export async function connect(builder) {
       });
       const list = el('div', null);
       list.id = name + '-management';
-      list.update = () => list.replaceChildren(...rows[name].filter(editable).map(row => {
+      list.update = () => list.replaceChildren(...rows[name].map(row => {
         const line = el('div', null, {class: 'deck-row'});
-        line.append(el('span', row.title), button('Editar', () => {
+        line.append(el('span', name === 'events' ? row.title + ' · ' + venueTime.format(row.startAt) : row.title));
+        if (!editable(row)) return line;
+        line.append(button('Editar', () => {
           if (name === 'decks' && Object.keys(builder.snapshot()).length &&
               !confirm('¿Cargar esta baraja y reemplazar el borrador?')) return;
           record = row;
@@ -136,13 +138,14 @@ export async function connect(builder) {
         })));
         return line;
       }));
-      section.append(el('h3', heading), form, list);
+      section.append(el('h3', heading), form, el('h4', name === 'decks' ? 'Barajas publicadas' : 'Torneos publicados'), list);
       list.update();
       return section;
     }
 
     function renderAdmin() {
       const message = el('p', null, {id: 'admin-message', role: 'status'});
+      $('public-builder').append($('deck-builder'));
       admin.replaceChildren(message);
       if (!user) {
         admin.append(button('Entrar con Google', run(() => auth.signInWithPopup(login, new auth.GoogleAuthProvider()))));
@@ -153,7 +156,26 @@ export async function connect(builder) {
         admin.append(el('p', 'Comparte tu UID con el superadministrador para recibir acceso.'));
         return;
       }
-      admin.append(manager('decks', 'Barajas preconstruidas'), manager('events', 'Programar torneos'));
+      const controls = el('div', null, {class: 'actions', role: 'group', 'aria-label': 'Secciones de administración'});
+      const panels = [];
+      function addPanel(label, panel) {
+        const control = button(label, () => {
+          for (const item of panels) {
+            item.panel.hidden = item.panel !== panel;
+            item.control.setAttribute('aria-pressed', String(item.panel === panel));
+          }
+        });
+        panel.hidden = panels.length > 0;
+        control.setAttribute('aria-pressed', String(!panel.hidden));
+        controls.append(control);
+        panels.push({control, panel});
+      }
+      const decks = el('section', null);
+      const builderSlot = el('div', null, {id: 'admin-builder'});
+      if (!$('administracion').hidden) builderSlot.append($('deck-builder'));
+      decks.append(el('h3', 'Deckbuilder'), builderSlot, manager('decks', 'Publicar una baraja'));
+      addPanel('Barajas', decks);
+      addPanel('Torneos', manager('events', 'Programar torneos'));
       if (isSuper()) {
         const form = el('form', null, {class: 'manager'});
         form.append(el('h3', 'Permisos de administrador'));
@@ -172,8 +194,9 @@ export async function connect(builder) {
           await db.deleteDoc(target());
           message.textContent = 'Acceso revocado.';
         })));
-        admin.append(form);
+        addPanel('Usuarios', form);
       }
+      admin.append(controls, ...panels.map(({panel}) => panel));
     }
 
     for (const name of Object.keys(rows)) db.onSnapshot(collection(name), result => {

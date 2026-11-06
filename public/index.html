@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Conoce Epic Splash, arma tu baraja de Pokémon TCG e imprime proxies para jugar.">
 <title>Epic Splash · Pokémon TCG</title>
-<link rel="stylesheet" href="./styles.css?v=31">
-<script type="module" src="./app.mjs?v=15"></script>
+<link rel="stylesheet" href="./styles.css?v=32">
+<script type="module" src="./app.mjs?v=16"></script>
 </head>
 <body>
 <header class="top"><a class="brand" href="#inicio"><span>✦</span> EPIC SPLASH</a><nav aria-label="Principal"><a href="#inicio" aria-current="page">Inicio</a><a href="#manual">Manual</a><a href="#constructor">Deckbuilder</a><a href="#eventos">Torneos</a><a href="#administracion">Administración</a></nav></header>
@@ -207,11 +207,12 @@
 <p>Elige una lista publicada o empieza desde cero. Tu borrador se guarda en este navegador.</p>
 <div class="filters"><label>Barajas preconstruidas<select id="presets"><option value="">Selecciona una baraja</option></select></label><button id="load-preset" disabled>Cargar copia</button></div>
 <p id="public-status" class="muted" role="status"></p>
-<div class="builder">
+<div id="public-builder"><div id="deck-builder" class="builder">
 <div><div class="filters"><label>Buscar carta<input id="search" type="search" placeholder="Nombre o código"></label><label>Categoría<select id="category"><option value="">Todas</option><option>Pokémon</option><option>Energías</option><option>Entrenadores</option></select></label><label>Idioma de cartas<select id="language"><option value="es">Español</option><option value="en">English</option></select></label></div><p id="catalog-status" role="status">Cargando catálogo…</p><div id="catalog"></div><button id="more" hidden>Mostrar más</button></div>
 <aside><div class="deck-head"><h3>Mi baraja</h3><strong id="total">0 / 60</strong></div><ul id="requirements"></ul><button id="add-basic-water" type="button" hidden>Añadir Agua básica</button><div id="deck"></div>
 <label class="print-token"><input id="include-break-token" type="checkbox"><span>Incluir token de Magikarp BREAK</span></label>
 <div class="actions"><button id="print" class="primary" disabled>Imprimir proxies</button><button id="clear">Vaciar</button></div><p id="print-status" role="status" class="muted">Imprime proxies o el token al 100 %, sin encabezados ni pies de página.</p></aside>
+</div>
 </div>
 </section>
 <section id="eventos" class="section" hidden><p class="eyebrow">03 / COMUNIDAD</p><h2>Próximos torneos</h2><div id="events" class="rule-grid" aria-live="polite"></div></section>

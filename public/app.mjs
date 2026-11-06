@@ -1,7 +1,7 @@
 import { $, el, button } from './ui.mjs';
 import { catalog } from './catalog.mjs';
 import { canAdd, normalize, status } from './rules.mjs';
-import { connect } from './cloud.mjs';
+import { connect } from './cloud.mjs?v=2';
 import { spanishImageBackups } from './spanish-image-backups.mjs?v=2';
 
 const navigation = [...document.querySelectorAll('nav a')];
@@ -19,6 +19,9 @@ function showPage() {
   }
   activePage = current;
   pages.forEach((page, i) => { page.hidden = i !== current; });
+  const builderHome = pages[current].id === 'administracion' && $('admin-builder')
+    || $('public-builder');
+  builderHome.append($('deck-builder'));
   navigation.forEach((link, i) => {
     if (i === current) link.setAttribute('aria-current', 'page');
     else link.removeAttribute('aria-current');
@@ -183,7 +186,7 @@ $('card-detail-add').onclick = () => {
   if (canAdd(deck, cards, detailCardId)) change(detailCardId, 1);
 };
 $('card-detail').addEventListener('close', () => {
-  if (!$('constructor').hidden) {
+  if (!$('deck-builder').closest('[hidden]')) {
     const preview = [...$('catalog').querySelectorAll('.tile-preview')]
       .find(button => button.dataset.cardId === detailCardId);
     preview?.focus({preventScroll: true});

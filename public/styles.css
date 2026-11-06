@@ -211,3 +211,5 @@ body:has(main > .hero:not([hidden])) > footer{display:none}
     transform:rotate(-90deg);object-fit:contain;
   }
 }
+
+#admin button[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}

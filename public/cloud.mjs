@@ -86,7 +86,7 @@ export async function connect(builder) {
         details = field(form, 'Detalles', 'details', 'text', 1000, false);
         url = field(form, 'Enlace de inscripción', 'url', 'url', 500, false);
       } else {
-        form.append(el('p', 'Al guardar se publica la lista actual del deckbuilder.'));
+        form.append(el('p', 'Puedes publicar la lista actual del Deckbuilder si tiene entre 1 y 60 cartas.'));
       }
       const submit = el('button', 'Publicar', {type: 'submit'});
       const reset = button('Cancelar edición', () => { record = undefined; form.reset(); submit.textContent = 'Publicar'; reset.hidden = true; });
@@ -104,7 +104,8 @@ export async function connect(builder) {
           Object.assign(payload, {startAt, location: location.value.trim(), details: details.value.trim(), url: url.value.trim()});
         } else {
           payload.cards = builder.snapshot();
-          if (!builder.valid(payload.cards)) throw new Error('Completa una baraja válida antes de publicar.');
+          const total = Object.values(payload.cards).reduce((sum, quantity) => sum + quantity, 0);
+          if (total < 1 || total > 60) throw new Error('La lista debe tener entre 1 y 60 cartas.');
         }
         if (record) await db.updateDoc(ref(name, record.id), payload);
         else await db.addDoc(collection(name), payload);

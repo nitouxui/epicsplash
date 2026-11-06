@@ -1,7 +1,7 @@
 import { $, el, button } from './ui.mjs';
 import { catalog } from './catalog.mjs';
 import { canAdd, normalize, status } from './rules.mjs';
-import { connect } from './cloud.mjs?v=3';
+import { connect } from './cloud.mjs?v=4';
 import { spanishImageBackups } from './spanish-image-backups.mjs?v=2';
 
 const navigation = [...document.querySelectorAll('nav a')];
@@ -319,6 +319,5 @@ catalog().then(result => {
 
 connect({
   snapshot: () => ({...deck}),
-  valid: candidate => ready && status(candidate, cards).valid,
   load: candidate => { deck = cleanDeck(candidate); render(); }
 });

@@ -264,11 +264,12 @@ body:has(main > .hero:not([hidden])) > footer{display:none}
 }
 .deck-search summary { cursor: pointer; font-weight: 750; }
 #deck-view { width: auto; }
-#deck.deck-grid {
+#deck.deck-grid { max-height: none; }
+.deck-category h5 { margin: 1rem 0 .5rem; color: var(--accent); font-size: .95rem; }
+.deck-grid .deck-category-cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 132px), 1fr));
   gap: .75rem;
-  max-height: none;
 }
 .deck-grid-card .deck-row { border-top: 0; justify-content: space-between; }
 .deck-grid-card .tile-preview { width: 100%; }

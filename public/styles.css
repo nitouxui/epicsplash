@@ -235,3 +235,39 @@ body:has(main > .hero:not([hidden])) > footer{display:none}
 #admin-builder .builder > aside {
   min-width: 0;
 }
+
+.admin-top {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .75rem;
+  margin-bottom: .75rem;
+}
+.admin-top .eyebrow { margin: 0; }
+#admin-session:empty { display: none; }
+#admin-session button { font-size: .85rem; }
+.admin-sections {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .25rem;
+  width: fit-content;
+  padding: .25rem;
+  margin: 1rem 0;
+  border: 1px solid var(--line);
+  border-radius: .65rem;
+  background: var(--panel);
+}
+.admin-sections button {
+  background: transparent;
+  border-color: transparent;
+  color: var(--muted);
+}
+#admin .admin-sections button[aria-pressed="true"] {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #181622;
+}
+.admin-back {
+  margin-bottom: .5rem;
+  color: var(--sky);
+}

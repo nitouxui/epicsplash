@@ -128,9 +128,10 @@ export async function connect(builder) {
       reset.hidden = true;
       if (builderSlot) {
         submit.setAttribute('form', form.id);
-        if (builderSlot.contains($('deck-builder'))) {
-          const actions = $('print').parentElement;
-          actions.insertBefore(submit, $('clear'));
+        const print = builderSlot.querySelector('#print');
+        if (print) {
+          const actions = print.parentElement;
+          print.after(submit);
           actions.after(feedback);
           submit.dataset.adminDeckControl = '';
           feedback.dataset.adminDeckControl = '';

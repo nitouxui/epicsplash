@@ -118,6 +118,12 @@ function cardCategory(card) {
 function renderCatalog() {
   const raw = $('search').value.trim();
   const query = normalize(raw);
+  $('search-results').hidden = !query;
+  if (!query) {
+    $('catalog').replaceChildren();
+    $('more').hidden = true;
+    return;
+  }
   const category = $('category').value;
   const matching = [...cards.values()].filter(card => card.key !== 'water' && (!category || cardCategory(card) === category) &&
     [card.name, localized(card).name, card.id].some(value => normalize(value).includes(query)));
@@ -196,7 +202,7 @@ $('card-detail-add').onclick = () => {
 };
 $('card-detail').addEventListener('close', () => {
   if (!$('deck-builder').closest('[hidden]')) {
-    const preview = [...$('catalog').querySelectorAll('.tile-preview')]
+    const preview = [...$('deck-builder').querySelectorAll('.tile-preview')]
       .find(button => button.dataset.cardId === detailCardId);
     preview?.focus({preventScroll: true});
   }
@@ -226,7 +232,10 @@ function render() {
     [state.evolutions === 5, state.evolutions + '/5 evoluciones distintas'],
     [state.valid, state.valid ? 'Baraja válida' : 'Completa los requisitos del formato']
   ].map(([ok, label]) => el('li', (ok ? '✓ ' : '○ ') + label)));
-  $('deck').replaceChildren(...Object.entries(deck).map(([id, quantity]) => {
+  const grid = $('deck-view').value === 'grid';
+  $('deck').classList.toggle('deck-grid', grid);
+  const entries = Object.entries(deck);
+  $('deck').replaceChildren(...entries.map(([id, quantity]) => {
     const card = cards.get(id);
     const name = card ? localized(card).name : id;
     const row = el('div', null, {class: 'deck-row'});
@@ -234,9 +243,28 @@ function render() {
     minus.setAttribute('aria-label', 'Quitar ' + name);
     const plus = button('+', () => change(id, 1), !canAdd(deck, cards, id));
     plus.setAttribute('aria-label', 'Añadir ' + name);
-    row.append(el('span', name), el('b', quantity), minus, plus);
-    return row;
+    row.append(el('b', quantity, {'aria-label': quantity + ' copias'}), minus, plus);
+    if (!grid) {
+      row.prepend(el('span', name));
+      return row;
+    }
+    const tile = el('article', null, {class: 'tile deck-grid-card'});
+    if (card) {
+      const preview = button(null, () => openCardDetail(card));
+      preview.className = 'tile-preview';
+      preview.dataset.cardId = id;
+      preview.setAttribute('aria-haspopup', 'dialog');
+      const image = el('img', null, {alt: '', loading: 'lazy'});
+      preview.append(image, el('strong', name));
+      setCardImage(image, localized(card), 'low', () => {
+        image.replaceWith(el('span', 'Imagen no disponible', {class: 'placeholder'}));
+      });
+      tile.append(preview);
+    } else tile.append(el('strong', name));
+    tile.append(row);
+    return tile;
   }));
+  if (!entries.length) $('deck').append(el('p', 'Tu baraja todavía está vacía.', {class: 'muted'}));
   const addWater = $('add-basic-water');
   addWater.hidden = !basicWaterId;
   addWater.disabled = !canAdd(deck, cards, basicWaterId);
@@ -252,6 +280,7 @@ $('add-basic-water').onclick = () => {
 $('clear').onclick = () => { if (!Object.keys(deck).length || confirm('¿Vaciar tu baraja?')) { deck = {}; render(); } };
 for (const id of ['search', 'category', 'language']) $(id).addEventListener('input', () => { limit = 24; render(); });
 $('more').onclick = () => { limit += 24; renderCatalog(); };
+$('deck-view').onchange = render;
 $('include-break-token').onchange = () => { $('print').disabled = !canPrint(); };
 $('print').onclick = async () => {
   if (!canPrint()) return;

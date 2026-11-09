@@ -114,7 +114,13 @@ export async function connect(builder) {
         feedback.textContent = '';
       }
       const reset = button('Cancelar edición', () => {
-        if (builderSlot && !confirm('¿Volver al listado y descartar los cambios de esta baraja?')) return;
+        if (builderSlot && record) {
+          const cards = Object.entries(builder.snapshot());
+          const changed = title.value.trim() !== record.title ||
+            cards.length !== Object.keys(record.cards).length ||
+            cards.some(([id, quantity]) => record.cards[id] !== quantity);
+          if (changed && !confirm('¿Volver al listado y descartar los cambios de esta baraja?')) return;
+        }
         resetEditor();
         if (builderSlot) showDeckEditor(false);
         else feedback.textContent = 'Edición cancelada.';
@@ -147,20 +153,27 @@ export async function connect(builder) {
           if (total < 1 || total > 60) throw new Error('La lista debe tener entre 1 y 60 cartas.');
         }
         const editing = Boolean(record);
+        let savedId = record?.id;
         section.inert = true;
         try {
           if (record) await db.updateDoc(ref(name, record.id), payload);
-          else await db.addDoc(collection(name), payload);
+          else savedId = (await db.addDoc(collection(name), payload)).id;
         } finally {
           section.inert = false;
         }
-        resetEditor();
         const success = editing ? 'Cambios guardados en «' + payload.title + '».' : '«' + payload.title + '» se publicó.';
         if (builderSlot) {
-          if (!editing) builder.load({});
+          if (!editing) {
+            previousDraft = {};
+            builder.load({});
+            builder.load(payload.cards, true);
+          }
+          record = {...payload, id: savedId};
+          editorHeading.textContent = 'Editando «' + payload.title + '»';
+          submit.textContent = 'Guardar cambios';
           libraryStatus.textContent = success;
-          showDeckEditor(false);
-        } else feedback.textContent = success;
+        } else resetEditor();
+        feedback.textContent = success;
       }, error => { feedback.textContent = error.message; });
       const list = el('div', null);
       list.id = name + '-management';

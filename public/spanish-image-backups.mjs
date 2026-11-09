@@ -114,6 +114,11 @@ export const spanishImageBackups = {
     "name": "Recuperar energía",
     "source": "https://www.wikidex.net/wiki/Recuperar_energ%C3%ADa_(TCG)"
   },
+  "dp1-108": {
+    "image": "https://images.wikidexcdn.net/mwuploads/wikidex/5/55/latest/20150912135936/Centro_Nocturno_Pok%C3%A9mon_%28Diamante_Y_Perla_TCG%29.png",
+    "name": "Centro Nocturno Pokémon",
+    "source": "https://www.wikidex.net/wiki/Centro_Nocturno_Pok%C3%A9mon_%28TCG%29"
+  },
   "dp6-134": {
     "image": "https://images.wikidexcdn.net/mwuploads/wikidex/a/ac/latest/20200514151030/Templo_Puntaneva_%28Despertar_de_las_Leyendas_TCG%29.png",
     "name": "Templo Puntaneva",

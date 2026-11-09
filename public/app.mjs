@@ -226,12 +226,6 @@ function render() {
   } catch { /* Optional storage. */ }
   const state = status(deck, cards);
   $('total').textContent = state.total + ' / 60';
-  $('requirements').replaceChildren(...[
-    [state.fish === 4, state.fish + '/4 Magikarp'],
-    [state.water + state.splash === 6 && state.water >= 3, state.water + ' Agua básica + ' + state.splash + ' Salpicadura / 6'],
-    [state.evolutions === 5, state.evolutions + '/5 evoluciones distintas'],
-    [state.valid, state.valid ? 'Baraja válida' : 'Completa los requisitos del formato']
-  ].map(([ok, label]) => el('li', (ok ? '✓ ' : '○ ') + label)));
   const grid = $('deck-view').value === 'grid';
   $('deck').classList.toggle('deck-grid', grid);
   const entries = Object.entries(deck);

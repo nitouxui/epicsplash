@@ -1,5 +1,5 @@
 import { $, el, button } from './ui.mjs';
-import { catalog } from './catalog.mjs';
+import { catalog, cardPreview } from './catalog.mjs?v=2';
 import { canAdd, normalize, status } from './rules.mjs';
 import { connect } from './cloud.mjs?v=10';
 import { spanishImageBackups } from './spanish-image-backups.mjs?v=2';
@@ -49,6 +49,7 @@ let limit = 24;
 let printing = false;
 let detailCardId;
 let basicWaterId;
+const previews = new Map();
 function cleanDeck(candidate) {
   return Object.fromEntries(Object.entries(candidate ?? {}).filter(([id, n]) =>
     /^[a-z0-9.-]+$/i.test(id) && Number.isInteger(n) && n > 0 && n <= 60 && !isPocket(id)));
@@ -254,7 +255,19 @@ function render() {
         image.replaceWith(el('span', 'Imagen no disponible', {class: 'placeholder'}));
       });
       tile.append(preview);
-    } else tile.append(el('strong', name));
+    } else {
+      const label = el('strong', name);
+      tile.append(label);
+      if (!previews.has(id)) previews.set(id, cardPreview(id));
+      previews.get(id).then(preview => {
+        if (!preview || !tile.isConnected) return;
+        const translated = localized(preview);
+        const image = el('img', null, {alt: '', loading: 'lazy'});
+        label.textContent = translated.name;
+        tile.prepend(image);
+        setCardImage(image, translated, 'low', () => image.remove());
+      });
+    }
     tile.append(row);
     return tile;
   }));
@@ -324,14 +337,22 @@ $('print').onclick = async () => {
   finally { sheets.replaceChildren(); printing = false; $('print').disabled = !canPrint(); }
 };
 
-render();
-catalog().then(result => {
+function applyCatalog(result) {
   cards = result.cards;
   basicWaterId = cards.get('xy1-134')?.key === 'water'
     ? 'xy1-134'
     : [...cards.values()].find(card => card.key === 'water')?.id;
   isPocket = result.isPocket;
   deck = cleanDeck(deck);
+}
+
+render();
+catalog(result => {
+  applyCatalog(result);
+  $('catalog-status').textContent = 'Puedes buscar cartas mientras verificamos las evoluciones.';
+  render();
+}).then(result => {
+  applyCatalog(result);
   ready = true;
   const visibleCount = [...cards.values()].filter(card => card.key !== 'water').length;
   const notes = [visibleCount + ' impresiones disponibles'];

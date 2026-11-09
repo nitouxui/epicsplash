@@ -1,6 +1,6 @@
 import { $, el, button } from './ui.mjs';
 import { catalog, cardPreview } from './catalog.mjs?v=2';
-import { canAdd, normalize, status } from './rules.mjs';
+import { canAdd, magikarp, normalize, status } from './rules.mjs';
 import { connect } from './cloud.mjs?v=10';
 import { spanishImageBackups } from './spanish-image-backups.mjs?v=4';
 
@@ -50,6 +50,11 @@ let printing = false;
 let detailCardId;
 let basicWaterId;
 const previews = new Map();
+const cardLabelsKey = 'epic-card-labels-v1';
+let cardLabels = {};
+try {
+  cardLabels = JSON.parse(localStorage.getItem(cardLabelsKey)) ?? {};
+} catch { /* Optional storage. */ }
 function cleanDeck(candidate) {
   return Object.fromEntries(Object.entries(candidate ?? {}).filter(([id, n]) =>
     /^[a-z0-9.-]+$/i.test(id) && Number.isInteger(n) && n > 0 && n <= 60 && !isPocket(id)));
@@ -221,20 +226,29 @@ function canPrint() {
     total <= 60 && Object.keys(deck).every(id => cards.has(id));
 }
 
-function render() {
-  try {
-    if (!temporaryDeck) localStorage.setItem(draftKey, JSON.stringify(deck));
-  } catch { /* Optional storage. */ }
-  const state = status(deck, cards);
-  $('total').textContent = state.total + ' / 60';
+function renderDeck() {
   const grid = $('deck-view').value === 'grid';
   $('deck').classList.toggle('deck-grid', grid);
   const groups = new Map(['Pokémon', 'Entrenadores', 'Energías', 'Por identificar']
     .map(category => [category, []]));
   for (const [id, quantity] of Object.entries(deck)) {
     const card = cards.get(id);
-    const name = card ? localized(card).name : id;
-    groups.get(card ? cardCategory(card) : 'Por identificar').push({id, quantity, card, name});
+    if (!card && !previews.has(id)) {
+      previews.set(id, null);
+      cardPreview(id).then(preview => {
+        previews.set(id, preview);
+        if (preview && deck[id] && !cards.has(id)) renderDeck();
+      });
+    }
+    const preview = previews.get(id);
+    const label = cardLabels[id];
+    const name = card || preview ? localized(card ?? preview).name
+      : ($('language').value === 'es' ? label?.es : label?.en) ?? label?.en ?? id;
+    const category = card ? cardCategory(card) : label?.category ??
+      ({pokemon: 'Pokémon', trainer: 'Entrenadores', entrenador: 'Entrenadores',
+        energy: 'Energías', energia: 'Energías'})[normalize(preview?.category ?? '')] ??
+      (magikarp.includes(id) ? 'Pokémon' : 'Por identificar');
+    groups.get(groups.has(category) ? category : 'Por identificar').push({id, quantity, card, name, preview});
   }
   const sections = [];
   for (const [category, entries] of groups) {
@@ -245,7 +259,7 @@ function render() {
     const content = el('div', null, {class: 'deck-category-cards'});
     section.append(el('h5', category + ' · ' + count), content);
     sections.push(section);
-    content.append(...entries.map(({id, quantity, card, name}) => {
+    content.append(...entries.map(({id, quantity, card, name, preview}) => {
       const row = el('div', null, {class: 'deck-row'});
       const minus = button('−', () => change(id, -1));
       minus.setAttribute('aria-label', 'Quitar ' + name);
@@ -269,17 +283,12 @@ function render() {
         });
         tile.append(preview);
       } else {
-        const label = el('strong', name);
-        tile.append(label);
-        if (!previews.has(id)) previews.set(id, cardPreview(id));
-        previews.get(id).then(preview => {
-          if (!preview || !tile.isConnected) return;
-          const translated = localized(preview);
+        tile.append(el('strong', name));
+        if (preview) {
           const image = el('img', null, {alt: '', loading: 'lazy'});
-          label.textContent = translated.name;
           tile.prepend(image);
-          setCardImage(image, translated, 'low', () => image.remove());
-        });
+          setCardImage(image, localized(preview), 'low', () => image.remove());
+        }
       }
       tile.append(row);
       return tile;
@@ -288,6 +297,15 @@ function render() {
   $('deck').replaceChildren(...(sections.length ? sections : [
     el('p', 'Tu baraja todavía está vacía.', {class: 'muted'})
   ]));
+}
+
+function render() {
+  try {
+    if (!temporaryDeck) localStorage.setItem(draftKey, JSON.stringify(deck));
+  } catch { /* Optional storage. */ }
+  const state = status(deck, cards);
+  $('total').textContent = state.total + ' / 60';
+  renderDeck();
   const addWater = $('add-basic-water');
   addWater.hidden = !basicWaterId;
   addWater.disabled = !canAdd(deck, cards, basicWaterId);
@@ -370,6 +388,13 @@ catalog(result => {
 }).then(result => {
   applyCatalog(result);
   ready = true;
+  cardLabels = Object.fromEntries([...cards.values()].map(card => [
+    card.id, {
+      en: card.name, es: card.es?.name ?? spanishImageBackups[card.id]?.name,
+      category: cardCategory(card)
+    }
+  ]));
+  try { localStorage.setItem(cardLabelsKey, JSON.stringify(cardLabels)); } catch { /* Optional storage. */ }
   const visibleCount = [...cards.values()].filter(card => card.key !== 'water').length;
   const notes = [visibleCount + ' impresiones disponibles'];
   if (!result.spanishAvailable) notes.push('catálogo en español temporalmente inaccesible');

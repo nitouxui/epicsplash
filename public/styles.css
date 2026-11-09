@@ -213,3 +213,25 @@ body:has(main > .hero:not([hidden])) > footer{display:none}
 }
 
 #admin button[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}
+
+.admin-decks:has(.admin-deck-editor:not([hidden])) {
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+
+#admin-builder .builder > div {
+  min-width: 0;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: .75rem;
+  padding: 1.15rem;
+}
+
+#admin-builder .builder > div > .filters {
+  margin-top: 0;
+}
+
+#admin-builder .builder > aside {
+  min-width: 0;
+}

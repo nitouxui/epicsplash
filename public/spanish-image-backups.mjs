@@ -222,6 +222,11 @@ export const spanishImageBackups = {
     "image": "https://limitlesstcg.nyc3.cdn.digitaloceanspaces.com/tpci/HIF/HIF_023_R_ES.png",
     "source": "https://limitlesstcg.com/cards/es/HIF/23"
   },
+  "sm3.5-58": {
+    "image": "https://images.wikidexcdn.net/mwuploads/wikidex/7/76/latest/20200723091323/Mueveda%C3%B1o_%28Leyendas_Luminosas_TCG%29.png",
+    "name": "Muevedaño",
+    "source": "https://www.wikidex.net/wiki/Mueveda%C3%B1o_(TCG)"
+  },
   "smp-SM186": {
     "image": "https://limitlesstcg.nyc3.cdn.digitaloceanspaces.com/tpci/SMP/SMP_186_R_ES.png",
     "source": "https://limitlesstcg.com/cards/es/SMP/186"

@@ -10,6 +10,26 @@ export const spanishImageBackups = {
     "name": "Mantenimiento",
     "source": "https://www.wikidex.net/wiki/Mantenimiento_(TCG)"
   },
+  "base2-12": {
+    "image": "https://images.wikidexcdn.net/mwuploads/wikidex/a/a1/latest/20180604120933/Vaporeon_%28Jungla_12_TCG%29.png",
+    "name": "Vaporeon",
+    "source": "https://www.wikidex.net/wiki/Vaporeon_(Jungle_TCG)"
+  },
+  "base2-20": {
+    "image": "https://images.wikidexcdn.net/mwuploads/wikidex/e/e2/latest/20180605205258/Jolteon_%28Jungla_20_TCG%29.png",
+    "name": "Jolteon",
+    "source": "https://www.wikidex.net/wiki/Vaporeon_(Jungle_TCG)"
+  },
+  "base2-28": {
+    "image": "https://images.wikidexcdn.net/mwuploads/wikidex/8/82/latest/20180622213242/Vaporeon_%28Jungla_28_TCG%29.png",
+    "name": "Vaporeon",
+    "source": "https://www.wikidex.net/wiki/Vaporeon_(Jungle_TCG)"
+  },
+  "base2-3": {
+    "image": "https://images.wikidexcdn.net/mwuploads/wikidex/4/4c/latest/20180604120912/Flareon_%28Jungla_3_TCG%29.png",
+    "name": "Flareon",
+    "source": "https://www.wikidex.net/wiki/Vaporeon_(Jungle_TCG)"
+  },
   "base3-58": {
     "image": "https://images.wikidexcdn.net/mwuploads/wikidex/0/0a/latest/20210516042736/Sr._Fuji_%28F%C3%B3sil_TCG%29.jpg",
     "name": "Sr. Fuji",
@@ -236,6 +256,11 @@ export const spanishImageBackups = {
   "xy0-36": {
     "image": "https://limitlesstcg.nyc3.cdn.digitaloceanspaces.com/tpci/KSS/KSS_036_R_ES.png",
     "source": "https://limitlesstcg.com/cards/es/KSS/36"
+  },
+  "xy4-109": {
+    "image": "https://images.wikidexcdn.net/mwuploads/wikidex/a/a3/latest/20190527185921/Buscapelea_%28Fuerzas_Fantasmales_TCG%29.png",
+    "name": "Buscapelea",
+    "source": "https://www.wikidex.net/wiki/Buscapelea_(TCG)"
   },
   "xyp-XY04": {
     "image": "https://limitlesstcg.nyc3.cdn.digitaloceanspaces.com/tpci/XYP/XYP_004_R_ES.png",

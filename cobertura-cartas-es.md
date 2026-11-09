@@ -88,3 +88,9 @@ Hay **144 de 360 impresiones** sin imagen en español verificada. Esto describe 
 | Umbreon | `2024sv-9`, `dp5-32`, `ecard2-41`, `ecard2-H29`, `ecard3-32`, `ecard3-H30`, `ex2-24`, `neo2-13`, `neo2-32` | `hgss3-10` |
 | Vaporeon | `base2-12`, `base2-28`, `dp5-34`, `ecard3-33`, `ecard3-H31`, `ex10-19`, `ex2-25`, `pl2-34`, `pop3-6` | `sm115-18` |
 | VS Seeker | `ex6-100`, `pl3-140` | `xy4-109` |
+
+## Verificación adicional del 9 de noviembre de 2026
+
+El recuento anterior es una referencia histórica. Se añadieron respaldos en español para Flareon de Jungla 3/64, Jolteon de Jungla 20/64, Vaporeon de Jungla 12/64 y 28/64 y Buscapelea de Fuerzas Fantasmales 109/119.
+
+Los escaneos consultados de Flareon 19/64, Espeon de Neo Discovery 1/75 y 20/75 y Umbreon de Neo Discovery 13/75 y 32/75 están en inglés. Esas impresiones siguen pendientes de una imagen verificada en español.

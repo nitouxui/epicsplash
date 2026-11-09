@@ -229,49 +229,65 @@ function render() {
   $('total').textContent = state.total + ' / 60';
   const grid = $('deck-view').value === 'grid';
   $('deck').classList.toggle('deck-grid', grid);
-  const entries = Object.entries(deck);
-  $('deck').replaceChildren(...entries.map(([id, quantity]) => {
+  const groups = new Map(['Pokémon', 'Entrenadores', 'Energías', 'Por identificar']
+    .map(category => [category, []]));
+  for (const [id, quantity] of Object.entries(deck)) {
     const card = cards.get(id);
     const name = card ? localized(card).name : id;
-    const row = el('div', null, {class: 'deck-row'});
-    const minus = button('−', () => change(id, -1));
-    minus.setAttribute('aria-label', 'Quitar ' + name);
-    const plus = button('+', () => change(id, 1), !canAdd(deck, cards, id));
-    plus.setAttribute('aria-label', 'Añadir ' + name);
-    row.append(el('b', quantity, {'aria-label': quantity + ' copias'}), minus, plus);
-    if (!grid) {
-      row.prepend(el('span', name));
-      return row;
-    }
-    const tile = el('article', null, {class: 'tile deck-grid-card'});
-    if (card) {
-      const preview = button(null, () => openCardDetail(card));
-      preview.className = 'tile-preview';
-      preview.dataset.cardId = id;
-      preview.setAttribute('aria-haspopup', 'dialog');
-      const image = el('img', null, {alt: '', loading: 'lazy'});
-      preview.append(image, el('strong', name));
-      setCardImage(image, localized(card), 'low', () => {
-        image.replaceWith(el('span', 'Imagen no disponible', {class: 'placeholder'}));
-      });
-      tile.append(preview);
-    } else {
-      const label = el('strong', name);
-      tile.append(label);
-      if (!previews.has(id)) previews.set(id, cardPreview(id));
-      previews.get(id).then(preview => {
-        if (!preview || !tile.isConnected) return;
-        const translated = localized(preview);
+    groups.get(card ? cardCategory(card) : 'Por identificar').push({id, quantity, card, name});
+  }
+  const sections = [];
+  for (const [category, entries] of groups) {
+    if (!entries.length) continue;
+    entries.sort((a, b) => a.name.localeCompare(b.name, 'es') || a.id.localeCompare(b.id));
+    const count = entries.reduce((sum, entry) => sum + entry.quantity, 0);
+    const section = el('section', null, {class: 'deck-category'});
+    const content = el('div', null, {class: 'deck-category-cards'});
+    section.append(el('h5', category + ' · ' + count), content);
+    sections.push(section);
+    content.append(...entries.map(({id, quantity, card, name}) => {
+      const row = el('div', null, {class: 'deck-row'});
+      const minus = button('−', () => change(id, -1));
+      minus.setAttribute('aria-label', 'Quitar ' + name);
+      const plus = button('+', () => change(id, 1), !canAdd(deck, cards, id));
+      plus.setAttribute('aria-label', 'Añadir ' + name);
+      row.append(el('b', quantity, {'aria-label': quantity + ' copias'}), minus, plus);
+      if (!grid) {
+        row.prepend(el('span', name));
+        return row;
+      }
+      const tile = el('article', null, {class: 'tile deck-grid-card'});
+      if (card) {
+        const preview = button(null, () => openCardDetail(card));
+        preview.className = 'tile-preview';
+        preview.dataset.cardId = id;
+        preview.setAttribute('aria-haspopup', 'dialog');
         const image = el('img', null, {alt: '', loading: 'lazy'});
-        label.textContent = translated.name;
-        tile.prepend(image);
-        setCardImage(image, translated, 'low', () => image.remove());
-      });
-    }
-    tile.append(row);
-    return tile;
-  }));
-  if (!entries.length) $('deck').append(el('p', 'Tu baraja todavía está vacía.', {class: 'muted'}));
+        preview.append(image, el('strong', name));
+        setCardImage(image, localized(card), 'low', () => {
+          image.replaceWith(el('span', 'Imagen no disponible', {class: 'placeholder'}));
+        });
+        tile.append(preview);
+      } else {
+        const label = el('strong', name);
+        tile.append(label);
+        if (!previews.has(id)) previews.set(id, cardPreview(id));
+        previews.get(id).then(preview => {
+          if (!preview || !tile.isConnected) return;
+          const translated = localized(preview);
+          const image = el('img', null, {alt: '', loading: 'lazy'});
+          label.textContent = translated.name;
+          tile.prepend(image);
+          setCardImage(image, translated, 'low', () => image.remove());
+        });
+      }
+      tile.append(row);
+      return tile;
+    }));
+  }
+  $('deck').replaceChildren(...(sections.length ? sections : [
+    el('p', 'Tu baraja todavía está vacía.', {class: 'muted'})
+  ]));
   const addWater = $('add-basic-water');
   addWater.hidden = !basicWaterId;
   addWater.disabled = !canAdd(deck, cards, basicWaterId);

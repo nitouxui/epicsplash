@@ -1,7 +1,7 @@
 import { $, el, button } from './ui.mjs';
 import { catalog } from './catalog.mjs';
 import { canAdd, normalize, status } from './rules.mjs';
-import { connect } from './cloud.mjs?v=5';
+import { connect } from './cloud.mjs?v=6';
 import { spanishImageBackups } from './spanish-image-backups.mjs?v=2';
 
 const navigation = [...document.querySelectorAll('nav a')];
@@ -43,6 +43,8 @@ let cards = new Map();
 let ready = false;
 let isPocket = () => false;
 let deck = {};
+const draftKey = isAdminPath ? 'epic-admin-deck' : 'epic-deck';
+let temporaryDeck = false;
 let limit = 24;
 let printing = false;
 let detailCardId;
@@ -83,7 +85,7 @@ function setCardImage(image, card, quality, unavailable) {
 }
 
 try {
-  const saved = JSON.parse(localStorage.getItem('epic-deck'));
+  const saved = JSON.parse(localStorage.getItem(draftKey));
   if (saved && typeof saved === 'object' && !Array.isArray(saved)) {
     deck = cleanDeck(saved);
   }
@@ -213,7 +215,9 @@ function canPrint() {
 }
 
 function render() {
-  try { localStorage.setItem('epic-deck', JSON.stringify(deck)); } catch { /* Optional storage. */ }
+  try {
+    if (!temporaryDeck) localStorage.setItem(draftKey, JSON.stringify(deck));
+  } catch { /* Optional storage. */ }
   const state = status(deck, cards);
   $('total').textContent = state.total + ' / 60';
   $('requirements').replaceChildren(...[
@@ -319,5 +323,9 @@ catalog().then(result => {
 
 connect({
   snapshot: () => ({...deck}),
-  load: candidate => { deck = cleanDeck(candidate); render(); }
+  load: (candidate, temporary = false) => {
+    temporaryDeck = temporary;
+    deck = cleanDeck(candidate);
+    render();
+  }
 });

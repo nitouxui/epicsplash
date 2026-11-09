@@ -82,7 +82,7 @@ export async function connect(builder) {
       const library = el('div', null);
       const editorHeading = el('h3', heading, {tabindex: '-1'});
       const listHeading = el('h3', builderSlot ? 'Barajas publicadas' : 'Torneos publicados', {tabindex: '-1'});
-      const form = el('form', null);
+      const form = el('form', null, builderSlot ? {id: 'deck-publish-form'} : {});
       const feedback = el('p', null, {role: 'status'});
       const libraryStatus = el('p', null, {role: 'status'});
       const title = field(form, 'Nombre', 'title', 'text', 100);
@@ -120,8 +120,16 @@ export async function connect(builder) {
         else feedback.textContent = 'Edición cancelada.';
       });
       reset.hidden = true;
-      form.append(submit);
-      if (!builderSlot) form.append(reset);
+      if (builderSlot) {
+        submit.setAttribute('form', form.id);
+        if (builderSlot.contains($('deck-builder'))) {
+          const actions = $('print').parentElement;
+          actions.insertBefore(submit, $('clear'));
+          actions.after(feedback);
+          submit.dataset.adminDeckControl = '';
+          feedback.dataset.adminDeckControl = '';
+        }
+      } else form.append(submit, reset);
       form.onsubmit = run(async event => {
         event.preventDefault();
         feedback.textContent = '';
@@ -209,7 +217,7 @@ export async function connect(builder) {
         }));
       };
       editor.append(editorHeading);
-      editor.append(form, feedback);
+      editor.append(form);
       if (builderSlot) {
         const create = button('Nueva baraja', () => {
           libraryStatus.textContent = '';
@@ -222,6 +230,8 @@ export async function connect(builder) {
         });
         editor.prepend(back);
         editor.append(builderSlot);
+        editor.classList.add('admin-deck-editor');
+        section.classList.add('admin-decks');
         editor.hidden = true;
         reset.hidden = true;
         search.oninput = list.update;
@@ -229,7 +239,10 @@ export async function connect(builder) {
         actions.append(create, search);
         library.append(listHeading, actions, libraryStatus, list);
         section.append(library, editor);
-      } else section.append(editor, listHeading, list);
+      } else {
+        editor.append(feedback);
+        section.append(editor, listHeading, list);
+      }
       list.update();
       return section;
     }
@@ -237,6 +250,7 @@ export async function connect(builder) {
     function renderAdmin() {
       editorsListener?.();
       editorsListener = undefined;
+      $('deck-builder').querySelectorAll('[data-admin-deck-control]').forEach(control => control.remove());
       const message = el('p', null, {id: 'admin-message', role: 'status'});
       $('public-builder').append($('deck-builder'));
       admin.replaceChildren(message);

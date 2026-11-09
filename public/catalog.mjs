@@ -1,11 +1,22 @@
 import { magikarp, normalize, species } from './rules.mjs';
 
 const api = 'https://api.tcgdex.net/v2';
-const get = async url => {
-  const response = await fetch(url, {signal: AbortSignal.timeout(25000)});
+const get = async (url, timeout = 25000) => {
+  const response = await fetch(url, {signal: AbortSignal.timeout(timeout)});
   if (!response.ok) throw new Error('No se pudo cargar ' + url);
   return response.json();
 };
+
+export async function cardPreview(id) {
+  const path = '/cards/' + encodeURIComponent(id);
+  const [english, spanish] = await Promise.allSettled([
+    get(api + '/en' + path, 8000), get(api + '/es' + path, 8000)
+  ]);
+  if (english.status === 'fulfilled') {
+    return {...english.value, es: spanish.status === 'fulfilled' ? spanish.value : undefined};
+  }
+  if (spanish.status === 'fulfilled') return {...spanish.value, es: spanish.value};
+}
 
 function classify(card, legality) {
   const name = normalize(card.name);
@@ -18,16 +29,16 @@ function classify(card, legality) {
   return legality.find(rule => rule.exact ? rule.exact.includes(id) : normalize(rule.name) === name);
 }
 
-export async function catalog() {
+export async function catalog(onAvailable) {
+  const spanish = get(api + '/es/cards', 10000).then(rows => ({
+    cards: new Map(rows.map(card => [card.id, card])), available: true
+  })).catch(() => ({cards: new Map(), available: false}));
   const [english, legality, pocket] = await Promise.all([
     get(api + '/en/cards'), get('./legality.json'), get(api + '/en/series/tcgp')
   ]);
   if (!pocket.sets?.length) throw new Error('No se pudo identificar la serie Pocket.');
   const pocketPrefixes = pocket.sets.map(set => set.id + '-');
   const isPocket = id => pocketPrefixes.some(prefix => id.startsWith(prefix));
-  const spanish = get(api + '/es/cards').then(rows => ({
-    cards: new Map(rows.map(card => [card.id, card])), available: true
-  })).catch(() => ({cards: new Map(), available: false}));
   const cards = new Map();
   const covered = new Set();
   const evolutions = [];
@@ -51,11 +62,12 @@ export async function catalog() {
     cards.set('mcd16-4', {id: 'mcd16-4', name: 'Magikarp', key: 'magikarp', max: 4,
       group: 'Magikarp', image: 'https://pkmncards.com/wp-content/uploads/en_US-MCD16-004-magikarp.jpg'});
   }
+  onAvailable({cards, isPocket});
   const failed = [];
   for (let i = 0; i < evolutions.length; i += 20) {
     await Promise.all(evolutions.slice(i, i + 20).map(async ([card, family]) => {
       try {
-        const detail = await get(api + '/en/cards/' + encodeURIComponent(card.id));
+        const detail = await get(api + '/en/cards/' + encodeURIComponent(card.id), 8000);
         if (normalize(detail.evolveFrom ?? '') === 'eevee' && normalize(detail.stage ?? '') === 'stage1')
           cards.set(card.id, {...card, key: family, max: 1, group: 'Evolución'});
       } catch { failed.push(card.name); }

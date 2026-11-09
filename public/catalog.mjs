@@ -46,7 +46,7 @@ export async function catalog(onAvailable) {
     if (isPocket(card.id)) continue;
     const rule = classify(card, legality);
     if (rule) {
-      cards.set(card.id, {...card, ...rule, name: card.name});
+      cards.set(card.id, {...card, ...rule, name: card.name, image: card.image ?? rule.image});
       covered.add(rule);
     } else {
       const family = species.find(name => new RegExp('\\b' + name + '\\b', 'i').test(card.name));

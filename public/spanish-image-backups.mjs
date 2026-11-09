@@ -30,6 +30,11 @@ export const spanishImageBackups = {
     "name": "Flareon",
     "source": "https://www.wikidex.net/wiki/Vaporeon_(Jungle_TCG)"
   },
+  "base2-4": {
+    "image": "https://www.tiendaslevelup.cl/fotos/TCG/pokemon/Singles%201999-2009/Jungle/%28TCG%29%20-%20Jolteon%20-%204%2064%20-%20ESP%20-%201st%20ed.jpg",
+    "name": "Jolteon",
+    "source": "https://www.tiendaslevelup.cl/producto/tcg-jolteon-4-64-h-p-esp/"
+  },
   "base3-58": {
     "image": "https://images.wikidexcdn.net/mwuploads/wikidex/0/0a/latest/20210516042736/Sr._Fuji_%28F%C3%B3sil_TCG%29.jpg",
     "name": "Sr. Fuji",

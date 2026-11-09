@@ -23,6 +23,7 @@ export async function connect(builder) {
     const ref = (name, id) => db.doc(store, name, id);
     const collection = name => db.collection(store, name);
     const rows = {decks: [], events: []};
+    let deckListState = 'loading';
     let user;
     let role;
     let roleListener;
@@ -78,23 +79,31 @@ export async function connect(builder) {
     function manager(name, heading, builderSlot) {
       const section = el('section', null, {class: 'manager'});
       const editor = el('div', null);
+      const library = el('div', null);
       const editorHeading = el('h3', heading, {tabindex: '-1'});
+      const listHeading = el('h3', builderSlot ? 'Barajas publicadas' : 'Torneos publicados', {tabindex: '-1'});
       const form = el('form', null);
       const feedback = el('p', null, {role: 'status'});
+      const libraryStatus = el('p', null, {role: 'status'});
       const title = field(form, 'Nombre', 'title', 'text', 100);
       let date, location, details, url, record;
       let previousDraft;
+      function showDeckEditor(open) {
+        library.hidden = open;
+        editor.hidden = !open;
+        (open ? editorHeading : listHeading).focus();
+      }
       if (name === 'events') {
         date = field(form, 'Fecha y hora (Santiago)', 'date', 'datetime-local', 24);
         location = field(form, 'Lugar y dirección', 'location', 'text', 200);
         details = field(form, 'Detalles', 'details', 'text', 1000, false);
         url = field(form, 'Enlace de inscripción', 'url', 'url', 500, false);
       } else {
-        form.append(el('p', 'Agrega de 1 a 60 cartas, escribe un nombre y guarda la lista.'));
+        form.append(el('p', 'Agrega de 1 a 60 cartas. Al publicar, la lista aparecerá en el Deckbuilder público.'));
       }
       const publishLabel = builderSlot ? 'Publicar baraja' : 'Publicar';
       const submit = el('button', publishLabel, {type: 'submit', class: 'primary'});
-      const reset = button('Cancelar edición', () => {
+      function resetEditor() {
         if (previousDraft) builder.load(previousDraft);
         previousDraft = undefined;
         record = undefined;
@@ -102,10 +111,17 @@ export async function connect(builder) {
         editorHeading.textContent = heading;
         submit.textContent = publishLabel;
         reset.hidden = true;
-        feedback.textContent = 'Edición cancelada.';
+        feedback.textContent = '';
+      }
+      const reset = button('Cancelar edición', () => {
+        if (builderSlot && !confirm('¿Volver al listado y descartar los cambios de esta baraja?')) return;
+        resetEditor();
+        if (builderSlot) showDeckEditor(false);
+        else feedback.textContent = 'Edición cancelada.';
       });
       reset.hidden = true;
-      form.append(submit, reset);
+      form.append(submit);
+      if (!builderSlot) form.append(reset);
       form.onsubmit = run(async event => {
         event.preventDefault();
         feedback.textContent = '';
@@ -130,52 +146,90 @@ export async function connect(builder) {
         } finally {
           section.inert = false;
         }
-        reset.click();
-        feedback.textContent = editing ? 'Cambios guardados en «' + payload.title + '».' : '«' + payload.title + '» se publicó.';
+        resetEditor();
+        const success = editing ? 'Cambios guardados en «' + payload.title + '».' : '«' + payload.title + '» se publicó.';
+        if (builderSlot) {
+          if (!editing) builder.load({});
+          libraryStatus.textContent = success;
+          showDeckEditor(false);
+        } else feedback.textContent = success;
       }, error => { feedback.textContent = error.message; });
       const list = el('div', null);
       list.id = name + '-management';
-      list.update = () => list.replaceChildren(...(rows[name].length ? rows[name].map(row => {
-        const line = el('div', null, {class: 'deck-row'});
-        const detail = builderSlot
-          ? Object.values(row.cards ?? {}).reduce((sum, quantity) => sum + quantity, 0) + ' cartas'
-          : venueTime.format(row.startAt);
-        line.append(el('span', row.title + ' · ' + detail));
-        if (!editable(row)) return line;
-        line.append(button('Editar', () => {
-          if (record?.id === row.id) {
-            editorHeading.focus();
-            return;
-          }
-          if (record && !confirm('¿Descartar los cambios y editar «' + row.title + '»?')) return;
-          if (builderSlot && !record) previousDraft = builder.snapshot();
-          record = row;
-          title.value = row.title;
-          if (name === 'events') {
-            date.value = localInput(row.startAt);
-            location.value = row.location;
-            details.value = row.details;
-            url.value = row.url;
-          } else builder.load(row.cards);
-          reset.hidden = false;
-          feedback.textContent = '';
-          editorHeading.textContent = 'Editando «' + row.title + '»';
-          submit.textContent = 'Guardar cambios';
-          editorHeading.focus();
-        }), button('Eliminar', run(async () => {
-          if (confirm('¿Eliminar «' + row.title + '»?')) {
-            await db.deleteDoc(ref(name, row.id));
-            if (record?.id === row.id) reset.click();
-          }
-        })));
-        return line;
-      }) : [el('p', builderSlot ? 'Aún no hay barajas publicadas.' : 'Aún no hay torneos publicados.', {class: 'muted'})]));
+      const search = el('input', null, {type: 'search', 'aria-label': 'Buscar barajas publicadas', placeholder: 'Buscar por nombre'});
+      const normalizeTitle = value => value.normalize('NFD').replace(/\p{M}/gu, '').toLocaleLowerCase('es').trim();
+      list.update = () => {
+        const visible = builderSlot
+          ? rows.decks.filter(row => normalizeTitle(row.title).includes(normalizeTitle(search.value)))
+          : rows.events;
+        if (!visible.length) {
+          const empty = builderSlot ? {
+            loading: 'Cargando barajas…',
+            error: 'No se pudieron cargar las barajas.',
+            loaded: rows.decks.length ? 'No hay barajas que coincidan con la búsqueda.' : 'Aún no hay barajas publicadas.'
+          }[deckListState] : 'Aún no hay torneos publicados.';
+          list.replaceChildren(el('p', empty, {class: 'muted'}));
+          return;
+        }
+        list.replaceChildren(...visible.map(row => {
+          const line = el('div', null, {class: 'deck-row'});
+          const detail = builderSlot
+            ? Object.values(row.cards ?? {}).reduce((sum, quantity) => sum + quantity, 0) + ' cartas'
+            : venueTime.format(row.startAt);
+          line.append(el('span', row.title + ' · ' + detail));
+          if (!editable(row)) return line;
+          line.append(button('Editar', () => {
+            if (record?.id === row.id) {
+              editorHeading.focus();
+              return;
+            }
+            if (record && !confirm('¿Descartar los cambios y editar «' + row.title + '»?')) return;
+            if (builderSlot && !record) previousDraft = builder.snapshot();
+            record = row;
+            title.value = row.title;
+            if (name === 'events') {
+              date.value = localInput(row.startAt);
+              location.value = row.location;
+              details.value = row.details;
+              url.value = row.url;
+            } else builder.load(row.cards, true);
+            reset.hidden = false;
+            feedback.textContent = '';
+            editorHeading.textContent = 'Editando «' + row.title + '»';
+            submit.textContent = 'Guardar cambios';
+            if (builderSlot) showDeckEditor(true);
+            else editorHeading.focus();
+          }), button('Eliminar', run(async () => {
+            if (confirm('¿Eliminar «' + row.title + '»?')) {
+              await db.deleteDoc(ref(name, row.id));
+              if (record?.id === row.id) resetEditor();
+            }
+          })));
+          return line;
+        }));
+      };
       editor.append(editorHeading);
-      if (builderSlot) editor.append(builderSlot);
       editor.append(form, feedback);
-      const listHeading = el('h3', builderSlot ? 'Barajas publicadas' : 'Torneos publicados');
-      if (builderSlot) section.append(listHeading, list, editor);
-      else section.append(editor, listHeading, list);
+      if (builderSlot) {
+        const create = button('Nueva baraja', () => {
+          libraryStatus.textContent = '';
+          showDeckEditor(true);
+        });
+        create.classList.add('primary');
+        const back = button('Volver al listado', () => {
+          if (record) reset.click();
+          else showDeckEditor(false);
+        });
+        editor.prepend(back);
+        editor.append(builderSlot);
+        editor.hidden = true;
+        reset.hidden = true;
+        search.oninput = list.update;
+        const actions = el('div', null, {class: 'actions'});
+        actions.append(create, search);
+        library.append(listHeading, actions, libraryStatus, list);
+        section.append(library, editor);
+      } else section.append(editor, listHeading, list);
       list.update();
       return section;
     }
@@ -254,12 +308,17 @@ export async function connect(builder) {
     }
 
     for (const name of Object.keys(rows)) db.onSnapshot(collection(name), result => {
+      if (name === 'decks') deckListState = 'loaded';
       rows[name] = result.docs.map(item => ({...item.data(), id: item.id})).sort((a, b) => a.title.localeCompare(b.title, 'es'));
       renderPublic();
       $(name + '-management')?.update();
     }, () => {
       if (name === 'events') events.textContent = 'No se pudieron cargar los torneos.';
-      else $('public-status').textContent = 'No se pudieron cargar las barajas.';
+      else {
+        deckListState = 'error';
+        $('public-status').textContent = 'No se pudieron cargar las barajas.';
+        $('decks-management')?.update();
+      }
     });
 
     auth.onAuthStateChanged(login, current => {

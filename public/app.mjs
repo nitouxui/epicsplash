@@ -1,7 +1,7 @@
 import { $, el, button } from './ui.mjs';
 import { catalog } from './catalog.mjs';
 import { canAdd, normalize, status } from './rules.mjs';
-import { connect } from './cloud.mjs?v=9';
+import { connect } from './cloud.mjs?v=10';
 import { spanishImageBackups } from './spanish-image-backups.mjs?v=2';
 
 const navigation = [...document.querySelectorAll('nav a')];

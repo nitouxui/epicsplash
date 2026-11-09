@@ -1,5 +1,232 @@
 # Epic Splash · Impresiones sin imagen en español verificada
 
+## Catálogo actual · 9 de noviembre de 2026
+
+**Faltan imágenes en español para 129 de 364 impresiones** (71 nombres de carta). El conteo usa el catálogo del Deckbuilder, las imágenes declaradas por TCGdex en español y los respaldos del proyecto. Excluye Energía Agua básica, cartas de Pocket y el token. Se cuentan impresiones por separado porque una misma carta puede tener varias ediciones.
+
+| Carta | Impresiones sin imagen en español |
+|---|---|
+| Ancient Technical Machine [Rock] | `ex5-85` |
+| Apricorn Maker | `ecard3-121` |
+| Blaine's Gamble | `gym1-121` |
+| Blaine's Last Resort | `gym1-105` |
+| Blaine's Quiz #2 | `gym2-111` |
+| Brock | `gym1-15`, `gym1-98` |
+| Buffer Piece | `ex15-72`, `ex3-83`, `pl4-84` |
+| Chaos Gym | `gym2-102` |
+| Computer Error | `basep-16` |
+| Counterattack Claws | `neo4-97` |
+| Cyrus's Initiative | `pl3-137` |
+| Dark Espeon | `neo4-4` |
+| Dark Flareon | `base5-35` |
+| Dark Jolteon | `base5-38` |
+| Dark Vaporeon | `base5-45`, `lc-9` |
+| Digger | `base5-75` |
+| Dual Ball | `ecard1-139`, `ex11-89`, `ex14-78`, `ex4-72` |
+| Energy Amplifier | `neo4-98` |
+| Energy Charge | `ex8-86` |
+| Energy Restore | `dp5-81`, `ecard1-141`, `ex1-81`, `pl4-86` |
+| Energy Root | `ex10-83` |
+| Erika's Perfume | `gym1-110` |
+| Espeon | `dp5-18`, `ecard2-11`, `ecard2-H09`, `ex2-16`, `neo2-1`, `neo2-20` |
+| Espeon ex | `mep-108` |
+| Espeon δ | `ex11-4` |
+| Flareon | `base2-19`, `dp5-19`, `ecard3-8`, `ecard3-H07`, `ex2-5`, `lc-10`, `pl2-19`, `pop3-2` |
+| Flareon δ | `ex11-5` |
+| Glaceon | `dp5-20`, `dp5-5`, `pl2-41` |
+| High Pressure System | `ex3-85`, `pop3-10` |
+| Holon Circle | `ex14-79` |
+| Impostor Professor Oak's Invention | `neo4-94` |
+| Jolteon | `dp5-23`, `ecard3-13`, `ecard3-H12`, `ex2-6`, `lc-14`, `pl2-26`, `pop3-3` |
+| Jolteon δ | `ex11-7` |
+| Lass | `base4-104` |
+| Leafeon | `dp5-24`, `dp5-7`, `pl2-45` |
+| Light Flareon | `neo4-46` |
+| Light Jolteon | `neo4-48` |
+| Light Vaporeon | `neo4-52` |
+| Lt. Surge's Jolteon | `gym2-28` |
+| Lucky Stadium | `basep-41`, `neo4-100` |
+| Magikarp | `mcd16-4` |
+| Maintenance | `base4-112` |
+| Mary's Impulse | `ecard1-142` |
+| Minion of Team Rocket | `gym1-113` |
+| Mirage Stadium | `ecard3-132` |
+| Multi Technical Machine 01 | `ecard1-144`, `pop2-9` |
+| Mystery Plate α | `ecard3-133` |
+| Mystery Plate β | `ecard3-134` |
+| Mystery Plate γ | `ecard3-135` |
+| Mystery Plate δ | `ecard3-136` |
+| Old Rod | `ex15-78`, `neo3-64` |
+| Pokémon Catcher | `me06-129` |
+| Pokémon Reversal | `ecard1-146`, `ex1-87`, `ex10-88`, `ex6-97` |
+| Power Charge | `ecard1-147` |
+| Power Tree | `ex12-76` |
+| Rocket's Minefield Gym | `gym2-119` |
+| Rocket's Secret Experiment | `gym2-120` |
+| Sabrina's Psychic Control | `gym2-121` |
+| Solid Rage | `ex10-92` |
+| Sylveon ex | `mep-100` |
+| Team Rocket's Evil Deeds | `neo4-103` |
+| Trash Exchange | `gym1-126` |
+| Tropical Tidal Wave | `np-27`, `np-36` |
+| Tropical Wind | `dpp-DP05`, `dpp-DP25`, `dpp-DP48`, `np-26` |
+| Umbreon | `2024sv-9`, `dp5-32`, `ecard2-41`, `ecard2-H29`, `ecard3-32`, `ecard3-H30`, `ex2-24`, `neo2-13`, `neo2-32` |
+| Umbreon ex | `mep-110` |
+| Umbreon δ | `ex11-17` |
+| Vaporeon | `dp5-34`, `ecard3-33`, `ecard3-H31`, `ex10-19`, `ex2-25`, `pl2-34`, `pop3-6` |
+| Vaporeon δ | `ex11-18` |
+| VS Seeker | `ex6-100`, `pl3-140` |
+| Windstorm | `ex14-85` |
+
+## Barrido de las 130 impresiones
+
+Se cruzaron todos los IDs con TCGdex y el registro de distribución de WikiDex. Se probaron rutas alternativas de imágenes cuando los proveedores tenían una ruta o abreviatura conocida. La ausencia de un archivo en esas rutas no demuestra que la carta no exista en español.
+
+**Añadida:** [Jolteon, Jungla 4/64](https://www.tiendaslevelup.cl/producto/tcg-jolteon-4-64-h-p-esp/). La fotografía muestra el texto impreso en español, el símbolo de Jungla y el número 4/64.
+
+### Expansiones sin distribución documentada en España ni Hispanoamérica (95)
+
+| ID | Carta | Expansión |
+|---|---|---|
+| `base4-104` | Lass | [Base Set 2](https://www.wikidex.net/wiki/Base_Set_2_(TCG)) |
+| `base4-112` | Maintenance | [Base Set 2](https://www.wikidex.net/wiki/Base_Set_2_(TCG)) |
+| `base5-35` | Dark Flareon | [Team Rocket](https://www.wikidex.net/wiki/Team_Rocket_(TCG)) |
+| `base5-38` | Dark Jolteon | [Team Rocket](https://www.wikidex.net/wiki/Team_Rocket_(TCG)) |
+| `base5-45` | Dark Vaporeon | [Team Rocket](https://www.wikidex.net/wiki/Team_Rocket_(TCG)) |
+| `base5-75` | Digger | [Team Rocket](https://www.wikidex.net/wiki/Team_Rocket_(TCG)) |
+| `dp5-18` | Espeon | [Majestic Dawn](https://www.wikidex.net/wiki/Diamante_%26_Perla_(TCG):_Majestic_Dawn) |
+| `dp5-19` | Flareon | [Majestic Dawn](https://www.wikidex.net/wiki/Diamante_%26_Perla_(TCG):_Majestic_Dawn) |
+| `dp5-20` | Glaceon | [Majestic Dawn](https://www.wikidex.net/wiki/Diamante_%26_Perla_(TCG):_Majestic_Dawn) |
+| `dp5-23` | Jolteon | [Majestic Dawn](https://www.wikidex.net/wiki/Diamante_%26_Perla_(TCG):_Majestic_Dawn) |
+| `dp5-24` | Leafeon | [Majestic Dawn](https://www.wikidex.net/wiki/Diamante_%26_Perla_(TCG):_Majestic_Dawn) |
+| `dp5-32` | Umbreon | [Majestic Dawn](https://www.wikidex.net/wiki/Diamante_%26_Perla_(TCG):_Majestic_Dawn) |
+| `dp5-34` | Vaporeon | [Majestic Dawn](https://www.wikidex.net/wiki/Diamante_%26_Perla_(TCG):_Majestic_Dawn) |
+| `dp5-5` | Glaceon | [Majestic Dawn](https://www.wikidex.net/wiki/Diamante_%26_Perla_(TCG):_Majestic_Dawn) |
+| `dp5-7` | Leafeon | [Majestic Dawn](https://www.wikidex.net/wiki/Diamante_%26_Perla_(TCG):_Majestic_Dawn) |
+| `dp5-81` | Energy Restore | [Majestic Dawn](https://www.wikidex.net/wiki/Diamante_%26_Perla_(TCG):_Majestic_Dawn) |
+| `ecard2-11` | Espeon | [Aquapolis](https://www.wikidex.net/wiki/Aquapolis_(TCG)) |
+| `ecard2-41` | Umbreon | [Aquapolis](https://www.wikidex.net/wiki/Aquapolis_(TCG)) |
+| `ecard2-H09` | Espeon | [Aquapolis](https://www.wikidex.net/wiki/Aquapolis_(TCG)) |
+| `ecard2-H29` | Umbreon | [Aquapolis](https://www.wikidex.net/wiki/Aquapolis_(TCG)) |
+| `ecard3-121` | Apricorn Maker | [Skyridge](https://www.wikidex.net/wiki/Skyridge_(TCG)) |
+| `ecard3-13` | Jolteon | [Skyridge](https://www.wikidex.net/wiki/Skyridge_(TCG)) |
+| `ecard3-132` | Mirage Stadium | [Skyridge](https://www.wikidex.net/wiki/Skyridge_(TCG)) |
+| `ecard3-133` | Mystery Plate α | [Skyridge](https://www.wikidex.net/wiki/Skyridge_(TCG)) |
+| `ecard3-134` | Mystery Plate β | [Skyridge](https://www.wikidex.net/wiki/Skyridge_(TCG)) |
+| `ecard3-135` | Mystery Plate γ | [Skyridge](https://www.wikidex.net/wiki/Skyridge_(TCG)) |
+| `ecard3-136` | Mystery Plate δ | [Skyridge](https://www.wikidex.net/wiki/Skyridge_(TCG)) |
+| `ecard3-32` | Umbreon | [Skyridge](https://www.wikidex.net/wiki/Skyridge_(TCG)) |
+| `ecard3-33` | Vaporeon | [Skyridge](https://www.wikidex.net/wiki/Skyridge_(TCG)) |
+| `ecard3-8` | Flareon | [Skyridge](https://www.wikidex.net/wiki/Skyridge_(TCG)) |
+| `ecard3-H07` | Flareon | [Skyridge](https://www.wikidex.net/wiki/Skyridge_(TCG)) |
+| `ecard3-H12` | Jolteon | [Skyridge](https://www.wikidex.net/wiki/Skyridge_(TCG)) |
+| `ecard3-H30` | Umbreon | [Skyridge](https://www.wikidex.net/wiki/Skyridge_(TCG)) |
+| `ecard3-H31` | Vaporeon | [Skyridge](https://www.wikidex.net/wiki/Skyridge_(TCG)) |
+| `ex11-17` | Umbreon δ | [Delta Species](https://www.wikidex.net/wiki/Ex_(TCG):_Delta_Species) |
+| `ex11-18` | Vaporeon δ | [Delta Species](https://www.wikidex.net/wiki/Ex_(TCG):_Delta_Species) |
+| `ex11-4` | Espeon δ | [Delta Species](https://www.wikidex.net/wiki/Ex_(TCG):_Delta_Species) |
+| `ex11-5` | Flareon δ | [Delta Species](https://www.wikidex.net/wiki/Ex_(TCG):_Delta_Species) |
+| `ex11-7` | Jolteon δ | [Delta Species](https://www.wikidex.net/wiki/Ex_(TCG):_Delta_Species) |
+| `ex11-89` | Dual Ball | [Delta Species](https://www.wikidex.net/wiki/Ex_(TCG):_Delta_Species) |
+| `ex12-76` | Power Tree | [Legend Maker](https://www.wikidex.net/wiki/Ex_(TCG):_Legend_Maker) |
+| `ex14-78` | Dual Ball | [Crystal Guardians](https://www.wikidex.net/wiki/Ex_(TCG):_Crystal_Guardians) |
+| `ex14-79` | Holon Circle | [Crystal Guardians](https://www.wikidex.net/wiki/Ex_(TCG):_Crystal_Guardians) |
+| `ex14-85` | Windstorm | [Crystal Guardians](https://www.wikidex.net/wiki/Ex_(TCG):_Crystal_Guardians) |
+| `ex15-72` | Buffer Piece | [Dragon Frontiers](https://www.wikidex.net/wiki/Ex_(TCG):_Dragon_Frontiers) |
+| `ex15-78` | Old Rod | [Dragon Frontiers](https://www.wikidex.net/wiki/Ex_(TCG):_Dragon_Frontiers) |
+| `ex2-16` | Espeon | [Sandstorm](https://www.wikidex.net/wiki/Ex_(TCG):_Sandstorm) |
+| `ex2-24` | Umbreon | [Sandstorm](https://www.wikidex.net/wiki/Ex_(TCG):_Sandstorm) |
+| `ex2-25` | Vaporeon | [Sandstorm](https://www.wikidex.net/wiki/Ex_(TCG):_Sandstorm) |
+| `ex2-5` | Flareon | [Sandstorm](https://www.wikidex.net/wiki/Ex_(TCG):_Sandstorm) |
+| `ex2-6` | Jolteon | [Sandstorm](https://www.wikidex.net/wiki/Ex_(TCG):_Sandstorm) |
+| `ex3-83` | Buffer Piece | [Dragon](https://www.wikidex.net/wiki/Ex_(TCG):_Dragon) |
+| `ex3-85` | High Pressure System | [Dragon](https://www.wikidex.net/wiki/Ex_(TCG):_Dragon) |
+| `ex4-72` | Dual Ball | [Team Magma vs Team Aqua](https://www.wikidex.net/wiki/Ex_(TCG):_Team_Magma_vs_Team_Aqua) |
+| `ex5-85` | Ancient Technical Machine [Rock] | [Hidden Legends](https://www.wikidex.net/wiki/Ex_(TCG):_Hidden_Legends) |
+| `ex6-100` | VS Seeker | [FireRed & LeafGreen](https://www.wikidex.net/wiki/Ex_(TCG):_FireRed_%26_LeafGreen) |
+| `ex6-97` | Pokémon Reversal | [FireRed & LeafGreen](https://www.wikidex.net/wiki/Ex_(TCG):_FireRed_%26_LeafGreen) |
+| `ex8-86` | Energy Charge | [Deoxys](https://www.wikidex.net/wiki/Ex_(TCG):_Deoxys) |
+| `gym1-105` | Blaine's Last Resort | [Gym Heroes](https://www.wikidex.net/wiki/Gym_Heroes_(TCG)) |
+| `gym1-110` | Erika's Perfume | [Gym Heroes](https://www.wikidex.net/wiki/Gym_Heroes_(TCG)) |
+| `gym1-113` | Minion of Team Rocket | [Gym Heroes](https://www.wikidex.net/wiki/Gym_Heroes_(TCG)) |
+| `gym1-121` | Blaine's Gamble | [Gym Heroes](https://www.wikidex.net/wiki/Gym_Heroes_(TCG)) |
+| `gym1-126` | Trash Exchange | [Gym Heroes](https://www.wikidex.net/wiki/Gym_Heroes_(TCG)) |
+| `gym1-15` | Brock | [Gym Heroes](https://www.wikidex.net/wiki/Gym_Heroes_(TCG)) |
+| `gym1-98` | Brock | [Gym Heroes](https://www.wikidex.net/wiki/Gym_Heroes_(TCG)) |
+| `gym2-102` | Chaos Gym | [Gym Challenge](https://www.wikidex.net/wiki/Gym_Challenge_(TCG)) |
+| `gym2-111` | Blaine's Quiz #2 | [Gym Challenge](https://www.wikidex.net/wiki/Gym_Challenge_(TCG)) |
+| `gym2-119` | Rocket's Minefield Gym | [Gym Challenge](https://www.wikidex.net/wiki/Gym_Challenge_(TCG)) |
+| `gym2-120` | Rocket's Secret Experiment | [Gym Challenge](https://www.wikidex.net/wiki/Gym_Challenge_(TCG)) |
+| `gym2-121` | Sabrina's Psychic Control | [Gym Challenge](https://www.wikidex.net/wiki/Gym_Challenge_(TCG)) |
+| `gym2-28` | Lt. Surge's Jolteon | [Gym Challenge](https://www.wikidex.net/wiki/Gym_Challenge_(TCG)) |
+| `lc-10` | Flareon | [Legendary Collection](https://www.wikidex.net/wiki/Legendary_Collection_(TCG)) |
+| `lc-14` | Jolteon | [Legendary Collection](https://www.wikidex.net/wiki/Legendary_Collection_(TCG)) |
+| `lc-9` | Dark Vaporeon | [Legendary Collection](https://www.wikidex.net/wiki/Legendary_Collection_(TCG)) |
+| `neo2-1` | Espeon | [Neo Discovery](https://www.wikidex.net/wiki/Neo_Discovery_(TCG)) |
+| `neo2-13` | Umbreon | [Neo Discovery](https://www.wikidex.net/wiki/Neo_Discovery_(TCG)) |
+| `neo2-20` | Espeon | [Neo Discovery](https://www.wikidex.net/wiki/Neo_Discovery_(TCG)) |
+| `neo2-32` | Umbreon | [Neo Discovery](https://www.wikidex.net/wiki/Neo_Discovery_(TCG)) |
+| `neo3-64` | Old Rod | [Neo Revelation](https://www.wikidex.net/wiki/Neo_Revelation_(TCG)) |
+| `neo4-100` | Lucky Stadium | [Neo Destiny](https://www.wikidex.net/wiki/Neo_Destiny_(TCG)) |
+| `neo4-103` | Team Rocket's Evil Deeds | [Neo Destiny](https://www.wikidex.net/wiki/Neo_Destiny_(TCG)) |
+| `neo4-4` | Dark Espeon | [Neo Destiny](https://www.wikidex.net/wiki/Neo_Destiny_(TCG)) |
+| `neo4-46` | Light Flareon | [Neo Destiny](https://www.wikidex.net/wiki/Neo_Destiny_(TCG)) |
+| `neo4-48` | Light Jolteon | [Neo Destiny](https://www.wikidex.net/wiki/Neo_Destiny_(TCG)) |
+| `neo4-52` | Light Vaporeon | [Neo Destiny](https://www.wikidex.net/wiki/Neo_Destiny_(TCG)) |
+| `neo4-94` | Impostor Professor Oak's Invention | [Neo Destiny](https://www.wikidex.net/wiki/Neo_Destiny_(TCG)) |
+| `neo4-97` | Counterattack Claws | [Neo Destiny](https://www.wikidex.net/wiki/Neo_Destiny_(TCG)) |
+| `neo4-98` | Energy Amplifier | [Neo Destiny](https://www.wikidex.net/wiki/Neo_Destiny_(TCG)) |
+| `pl2-19` | Flareon | [Rising Rivals](https://www.wikidex.net/wiki/Platino_(TCG):_Rising_Rivals) |
+| `pl2-26` | Jolteon | [Rising Rivals](https://www.wikidex.net/wiki/Platino_(TCG):_Rising_Rivals) |
+| `pl2-34` | Vaporeon | [Rising Rivals](https://www.wikidex.net/wiki/Platino_(TCG):_Rising_Rivals) |
+| `pl2-41` | Glaceon | [Rising Rivals](https://www.wikidex.net/wiki/Platino_(TCG):_Rising_Rivals) |
+| `pl2-45` | Leafeon | [Rising Rivals](https://www.wikidex.net/wiki/Platino_(TCG):_Rising_Rivals) |
+| `pl3-137` | Cyrus's Initiative | [Supreme Victors](https://www.wikidex.net/wiki/Platino_(TCG):_Supreme_Victors) |
+| `pl3-140` | VS Seeker | [Supreme Victors](https://www.wikidex.net/wiki/Platino_(TCG):_Supreme_Victors) |
+
+### Otras impresiones sin escaneo confirmado (34)
+
+| ID | Carta | Expansión |
+|---|---|---|
+| `2024sv-9` | Umbreon | McDonald's Collection 2024 |
+| `base2-19` | Flareon | [Jungle](https://www.wikidex.net/wiki/Jungla_(TCG)) |
+| `basep-16` | Computer Error | Wizards Black Star Promos |
+| `basep-41` | Lucky Stadium | Wizards Black Star Promos |
+| `dpp-DP05` | Tropical Wind | DP Black Star Promos |
+| `dpp-DP25` | Tropical Wind | DP Black Star Promos |
+| `dpp-DP48` | Tropical Wind | DP Black Star Promos |
+| `ecard1-139` | Dual Ball | Expedition Base Set |
+| `ecard1-141` | Energy Restore | Expedition Base Set |
+| `ecard1-142` | Mary's Impulse | Expedition Base Set |
+| `ecard1-144` | Multi Technical Machine 01 | Expedition Base Set |
+| `ecard1-146` | Pokémon Reversal | Expedition Base Set |
+| `ecard1-147` | Power Charge | Expedition Base Set |
+| `ex1-81` | Energy Restore | [Ruby & Sapphire](https://www.wikidex.net/wiki/Ex_(TCG):_Rub%C3%AD_%26_Zafiro) |
+| `ex1-87` | Pokémon Reversal | [Ruby & Sapphire](https://www.wikidex.net/wiki/Ex_(TCG):_Rub%C3%AD_%26_Zafiro) |
+| `ex10-19` | Vaporeon | [Unseen Forces](https://www.wikidex.net/wiki/Ex_(TCG):_Fuerzas_Ocultas) |
+| `ex10-83` | Energy Root | [Unseen Forces](https://www.wikidex.net/wiki/Ex_(TCG):_Fuerzas_Ocultas) |
+| `ex10-88` | Pokémon Reversal | [Unseen Forces](https://www.wikidex.net/wiki/Ex_(TCG):_Fuerzas_Ocultas) |
+| `ex10-92` | Solid Rage | [Unseen Forces](https://www.wikidex.net/wiki/Ex_(TCG):_Fuerzas_Ocultas) |
+| `mcd16-4` | Magikarp | McDonald’s Collection 2016 |
+| `me06-129` | Pokémon Catcher | Delta Reign |
+| `mep-100` | Sylveon ex | MEP Black Star Promos |
+| `mep-108` | Espeon ex | MEP Black Star Promos |
+| `mep-110` | Umbreon ex | MEP Black Star Promos |
+| `np-26` | Tropical Wind | Nintendo Black Star Promos |
+| `np-27` | Tropical Tidal Wave | Nintendo Black Star Promos |
+| `np-36` | Tropical Tidal Wave | Nintendo Black Star Promos |
+| `pl4-84` | Buffer Piece | [Arceus](https://www.wikidex.net/wiki/Platino_(TCG):_Arceus) |
+| `pl4-86` | Energy Restore | [Arceus](https://www.wikidex.net/wiki/Platino_(TCG):_Arceus) |
+| `pop2-9` | Multi Technical Machine 01 | POP Series 2 |
+| `pop3-10` | High Pressure System | POP Series 3 |
+| `pop3-2` | Flareon | POP Series 3 |
+| `pop3-3` | Jolteon | POP Series 3 |
+| `pop3-6` | Vaporeon | POP Series 3 |
+
+Los cuatro escaneos de [Viento Tropical](https://www.wikidex.net/wiki/Viento_Tropical_(TCG)) consultados están en inglés. La [foto de Sylveon ex MEP 100](https://pokeled.com/es/blogs/pokemon/caja-sylveon-ex-30-aniversario) muestra la impresión francesa, y la [ficha española de Umbreon ex MEP 110](https://dexli.st/cards/es/es-mep-110) usa una imagen inglesa. La [colección McDonald’s 2016](https://bulbapedia.bulbagarden.net/wiki/McDonald%27s_Collection_2016_(TCG)) tuvo distribución en español, pero sigue pendiente una imagen verificada de Magikarp 4/12.
+
+## Historial de la auditoría
+
 Auditoría del catálogo del Deckbuilder del 6 de noviembre de 2026. Compara las imágenes de TCGdex con los respaldos verificados de Limitless. El alcance excluye Energía Agua básica, cartas de Pocket y el token.
 
 Hay **144 de 360 impresiones** sin imagen en español verificada. Esto describe la cobertura de imágenes para proxies. Una carta puede tener texto en español o haberse publicado en ese idioma.

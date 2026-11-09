@@ -2,7 +2,7 @@ import { $, el, button } from './ui.mjs';
 import { catalog, cardPreview } from './catalog.mjs?v=2';
 import { canAdd, normalize, status } from './rules.mjs';
 import { connect } from './cloud.mjs?v=10';
-import { spanishImageBackups } from './spanish-image-backups.mjs?v=3';
+import { spanishImageBackups } from './spanish-image-backups.mjs?v=4';
 
 const navigation = [...document.querySelectorAll('nav a')];
 const routes = navigation.map(link => link.getAttribute('href'));

@@ -32,11 +32,11 @@ export async function connect(builder) {
     const isSuper = () => role === 'superadmin';
     const editable = row => isSuper() || role === 'editor' && row.owner === user?.uid;
     const showError = error => { $('admin-message').textContent = error.message; };
-    const run = action => async event => {
+    const run = (action, report = showError) => async event => {
       const control = event?.submitter ?? event?.currentTarget;
       if (control) control.disabled = true;
       try { await action(event); }
-      catch (error) { showError(error); }
+      catch (error) { report(error); }
       finally { if (control) control.disabled = false; }
     };
 
@@ -75,25 +75,40 @@ export async function connect(builder) {
       return input;
     }
 
-    function manager(name, heading) {
+    function manager(name, heading, builderSlot) {
       const section = el('section', null, {class: 'manager'});
+      const editor = el('div', null);
+      const editorHeading = el('h3', heading, {tabindex: '-1'});
       const form = el('form', null);
+      const feedback = el('p', null, {role: 'status'});
       const title = field(form, 'Nombre', 'title', 'text', 100);
       let date, location, details, url, record;
+      let previousDraft;
       if (name === 'events') {
         date = field(form, 'Fecha y hora (Santiago)', 'date', 'datetime-local', 24);
         location = field(form, 'Lugar y dirección', 'location', 'text', 200);
         details = field(form, 'Detalles', 'details', 'text', 1000, false);
         url = field(form, 'Enlace de inscripción', 'url', 'url', 500, false);
       } else {
-        form.append(el('p', 'Puedes publicar la lista actual del Deckbuilder si tiene entre 1 y 60 cartas.'));
+        form.append(el('p', 'Agrega de 1 a 60 cartas, escribe un nombre y guarda la lista.'));
       }
-      const submit = el('button', 'Publicar', {type: 'submit'});
-      const reset = button('Cancelar edición', () => { record = undefined; form.reset(); submit.textContent = 'Publicar'; reset.hidden = true; });
+      const publishLabel = builderSlot ? 'Publicar baraja' : 'Publicar';
+      const submit = el('button', publishLabel, {type: 'submit', class: 'primary'});
+      const reset = button('Cancelar edición', () => {
+        if (previousDraft) builder.load(previousDraft);
+        previousDraft = undefined;
+        record = undefined;
+        form.reset();
+        editorHeading.textContent = heading;
+        submit.textContent = publishLabel;
+        reset.hidden = true;
+        feedback.textContent = 'Edición cancelada.';
+      });
       reset.hidden = true;
       form.append(submit, reset);
       form.onsubmit = run(async event => {
         event.preventDefault();
+        feedback.textContent = '';
         const payload = {title: title.value.trim(), owner: record?.owner ?? user.uid};
         if (!payload.title) throw new Error('Escribe un nombre.');
         if (name === 'events') {
@@ -107,20 +122,33 @@ export async function connect(builder) {
           const total = Object.values(payload.cards).reduce((sum, quantity) => sum + quantity, 0);
           if (total < 1 || total > 60) throw new Error('La lista debe tener entre 1 y 60 cartas.');
         }
-        if (record) await db.updateDoc(ref(name, record.id), payload);
-        else await db.addDoc(collection(name), payload);
+        const editing = Boolean(record);
+        section.inert = true;
+        try {
+          if (record) await db.updateDoc(ref(name, record.id), payload);
+          else await db.addDoc(collection(name), payload);
+        } finally {
+          section.inert = false;
+        }
         reset.click();
-        $('admin-message').textContent = 'Publicación guardada.';
-      });
+        feedback.textContent = editing ? 'Cambios guardados en «' + payload.title + '».' : '«' + payload.title + '» se publicó.';
+      }, error => { feedback.textContent = error.message; });
       const list = el('div', null);
       list.id = name + '-management';
-      list.update = () => list.replaceChildren(...rows[name].map(row => {
+      list.update = () => list.replaceChildren(...(rows[name].length ? rows[name].map(row => {
         const line = el('div', null, {class: 'deck-row'});
-        line.append(el('span', name === 'events' ? row.title + ' · ' + venueTime.format(row.startAt) : row.title));
+        const detail = builderSlot
+          ? Object.values(row.cards ?? {}).reduce((sum, quantity) => sum + quantity, 0) + ' cartas'
+          : venueTime.format(row.startAt);
+        line.append(el('span', row.title + ' · ' + detail));
         if (!editable(row)) return line;
         line.append(button('Editar', () => {
-          if (name === 'decks' && Object.keys(builder.snapshot()).length &&
-              !confirm('¿Cargar esta baraja y reemplazar el borrador?')) return;
+          if (record?.id === row.id) {
+            editorHeading.focus();
+            return;
+          }
+          if (record && !confirm('¿Descartar los cambios y editar «' + row.title + '»?')) return;
+          if (builderSlot && !record) previousDraft = builder.snapshot();
           record = row;
           title.value = row.title;
           if (name === 'events') {
@@ -130,8 +158,10 @@ export async function connect(builder) {
             url.value = row.url;
           } else builder.load(row.cards);
           reset.hidden = false;
+          feedback.textContent = '';
+          editorHeading.textContent = 'Editando «' + row.title + '»';
           submit.textContent = 'Guardar cambios';
-          title.focus();
+          editorHeading.focus();
         }), button('Eliminar', run(async () => {
           if (confirm('¿Eliminar «' + row.title + '»?')) {
             await db.deleteDoc(ref(name, row.id));
@@ -139,8 +169,13 @@ export async function connect(builder) {
           }
         })));
         return line;
-      }));
-      section.append(el('h3', heading), form, el('h4', name === 'decks' ? 'Barajas publicadas' : 'Torneos publicados'), list);
+      }) : [el('p', builderSlot ? 'Aún no hay barajas publicadas.' : 'Aún no hay torneos publicados.', {class: 'muted'})]));
+      editor.append(editorHeading);
+      if (builderSlot) editor.append(builderSlot);
+      editor.append(form, feedback);
+      const listHeading = el('h3', builderSlot ? 'Barajas publicadas' : 'Torneos publicados');
+      if (builderSlot) section.append(listHeading, list, editor);
+      else section.append(editor, listHeading, list);
       list.update();
       return section;
     }
@@ -174,11 +209,9 @@ export async function connect(builder) {
         controls.append(control);
         panels.push({control, panel});
       }
-      const decks = el('section', null);
       const builderSlot = el('div', null, {id: 'admin-builder'});
       if (!$('administracion').hidden) builderSlot.append($('deck-builder'));
-      decks.append(el('h3', 'Deckbuilder'), builderSlot, manager('decks', 'Publicar una baraja'));
-      addPanel('Barajas', decks);
+      addPanel('Barajas', manager('decks', 'Crear una baraja', builderSlot));
       addPanel('Torneos', manager('events', 'Programar torneos'));
       if (isSuper()) {
         const form = el('form', null, {class: 'manager'});

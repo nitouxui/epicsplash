@@ -88,6 +88,7 @@
     "name": "Damage Mover",
     "group": "Objeto",
     "key": "Damage Mover",
+    "image": "https://limitlesstcg.nyc3.cdn.digitaloceanspaces.com/tpci/SLG/SLG_058_R_EN.png",
     "max": 4,
     "source": "https://pkmncards.com/card/damage-mover-shining-legends-slg-58/"
   },

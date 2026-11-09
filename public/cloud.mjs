@@ -242,6 +242,8 @@ export async function connect(builder) {
           if (record) reset.click();
           else showDeckEditor(false);
         });
+        back.classList.add('admin-back');
+        back.prepend(el('span', '←', {'aria-hidden': 'true'}));
         editor.prepend(back);
         editor.append(builderSlot);
         editor.classList.add('admin-deck-editor');
@@ -266,18 +268,24 @@ export async function connect(builder) {
       editorsListener = undefined;
       $('deck-builder').querySelectorAll('[data-admin-deck-control]').forEach(control => control.remove());
       const message = el('p', null, {id: 'admin-message', role: 'status'});
+      const session = $('admin-session');
+      session.replaceChildren();
       $('public-builder').append($('deck-builder'));
       admin.replaceChildren(message);
       if (!user) {
         admin.append(button('Entrar con Google', run(() => auth.signInWithPopup(login, new auth.GoogleAuthProvider()))));
         return;
       }
-      admin.append(el('p', 'UID de acceso: ' + user.uid), button('Cerrar sesión', run(() => auth.signOut(login))));
+      session.append(button('Cerrar sesión', run(() => auth.signOut(login))));
       if (!isSuper() && role !== 'editor') {
-        admin.append(el('p', 'Comparte tu UID con el superadministrador para recibir acceso.'));
+        const copy = button('Copiar UID para solicitar acceso', run(async () => {
+          await navigator.clipboard.writeText(user.uid);
+          message.textContent = 'UID copiado.';
+        }));
+        admin.append(el('p', 'Solicita acceso al superadministrador.'), copy);
         return;
       }
-      const controls = el('div', null, {class: 'actions', role: 'group', 'aria-label': 'Secciones de administración'});
+      const controls = el('div', null, {class: 'admin-sections', role: 'group', 'aria-label': 'Secciones de administración'});
       const panels = [];
       function addPanel(label, panel) {
         const control = button(label, () => {

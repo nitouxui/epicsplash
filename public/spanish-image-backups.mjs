@@ -204,6 +204,11 @@ export const spanishImageBackups = {
     "image": "https://limitlesstcg.nyc3.cdn.digitaloceanspaces.com/tpci/HSP/HSP_018_R_ES.png",
     "source": "https://limitlesstcg.com/cards/es/HSP/18"
   },
+  "me06-129": {
+    "image": "https://images.wikidexcdn.net/mwuploads/wikidex/d/dd/latest/20261105233522/Capturapok%C3%A9mon_%28Dominio_Delta_ES_TCG%29.png",
+    "name": "Capturapokémon",
+    "source": "https://www.wikidex.net/wiki/Capturapok%C3%A9mon_(TCG)"
+  },
   "neo1-83": {
     "image": "https://images.wikidexcdn.net/mwuploads/wikidex/e/e3/latest/20210612181434/Juego_Electr%C3%B3nico_%28Neo_G%C3%A9nesis_TCG%29.png",
     "name": "Juego Electrónico",
@@ -218,6 +223,26 @@ export const spanishImageBackups = {
     "image": "https://images.wikidexcdn.net/mwuploads/wikidex/c/c6/latest/20210805092330/Juego_de_dar_la_vuelta_a_las_cartas_%28Neo_G%C3%A9nesis_TCG%29.png",
     "name": "Juego de dar la vuelta a las cartas",
     "source": "https://www.wikidex.net/wiki/Juego_de_dar_la_vuelta_a_las_cartas_(TCG)"
+  },
+  "pl4-84": {
+    "image": "https://images.wikidexcdn.net/mwuploads/wikidex/a/af/latest/20190220181156/Parachoques_%28Arceus_TCG%29.png",
+    "name": "Parachoques",
+    "source": "https://www.wikidex.net/wiki/Parachoques_(TCG)"
+  },
+  "pl4-86": {
+    "image": "https://images.wikidexcdn.net/mwuploads/wikidex/5/56/latest/20150103180908/Recuperar_Energ%C3%ADa_%28Arceus_TCG%29.png",
+    "name": "Recuperar energía",
+    "source": "https://www.wikidex.net/wiki/Recuperar_energ%C3%ADa_(TCG)"
+  },
+  "pop3-2": {
+    "image": "https://images.wikidexcdn.net/mwuploads/wikidex/5/5d/latest/20240426195719/Flareon_%28POP_Series_3_TCG%29.png",
+    "name": "Flareon",
+    "source": "https://www.wikidex.net/wiki/Flareon_(POP_Serie_3_TCG)"
+  },
+  "pop3-3": {
+    "image": "https://images.wikidexcdn.net/mwuploads/wikidex/b/b6/latest/20240426200305/Jolteon_%28POP_Series_3_TCG%29.png",
+    "name": "Jolteon",
+    "source": "https://www.wikidex.net/wiki/Jolteon_(POP_Serie_3_TCG)"
   },
   "sm115-18": {
     "image": "https://limitlesstcg.nyc3.cdn.digitaloceanspaces.com/tpci/HIF/HIF_018_R_ES.png",

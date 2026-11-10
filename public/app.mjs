@@ -1,5 +1,5 @@
 import { $, el, button } from './ui.mjs';
-import { catalog, cardPreview } from './catalog.mjs?v=3';
+import { catalog, cardPreview } from './catalog.mjs?v=4';
 import { canAdd, magikarp, normalize, species, status } from './rules.mjs';
 import { connect } from './cloud.mjs?v=10';
 import { spanishImageBackups, spanishReprints } from './spanish-image-backups.mjs?v=12';
@@ -435,11 +435,7 @@ function applyCatalog(result) {
 }
 
 render();
-catalog(result => {
-  applyCatalog(result);
-  $('catalog-status').textContent = 'Puedes buscar cartas mientras verificamos las evoluciones.';
-  render();
-}).then(result => {
+catalog().then(result => {
   applyCatalog(result);
   ready = true;
   cardLabels = Object.fromEntries([...cards.values()].map(card => [
@@ -451,9 +447,7 @@ catalog(result => {
   try { localStorage.setItem(cardLabelsKey, JSON.stringify(cardLabels)); } catch { /* Optional storage. */ }
   const visibleCount = [...cards.values()].filter(card => card.key !== 'water').length;
   const notes = [visibleCount + ' impresiones disponibles'];
-  if (!result.spanishAvailable) notes.push('catálogo en español temporalmente inaccesible');
   if (result.missing.length) notes.push('sin coincidencia en TCGdex: ' + result.missing.join(', '));
-  if (result.failed.length) notes.push(result.failed.length + ' evoluciones pendientes de verificar');
   $('catalog-status').textContent = notes.join(' · ');
   render();
 }).catch(() => {

@@ -2,7 +2,7 @@ import { $, el, button } from './ui.mjs';
 import { catalog, cardPreview } from './catalog.mjs?v=3';
 import { canAdd, magikarp, normalize, status } from './rules.mjs';
 import { connect } from './cloud.mjs?v=10';
-import { spanishImageBackups } from './spanish-image-backups.mjs?v=8';
+import { spanishImageBackups, spanishReprints } from './spanish-image-backups.mjs?v=9';
 
 const navigation = [...document.querySelectorAll('nav a')];
 const routes = navigation.map(link => link.getAttribute('href'));
@@ -61,7 +61,10 @@ function cleanDeck(candidate) {
 }
 
 function usesImage(source, url) {
-  return source && (url === source || url.startsWith(source + '/'));
+  if (!source) return false;
+  const original = new URL(source, document.baseURI).href;
+  const loaded = new URL(url, document.baseURI).href;
+  return loaded === original || loaded.startsWith(original + '/');
 }
 
 function needsEnglishImageNotice(card, url) {
@@ -100,19 +103,28 @@ try {
 function localized(card) {
   const spanish = $('language').value === 'es';
   const backup = spanish ? spanishImageBackups[card.id] : undefined;
+  const [reprintId, reprintEdition] = spanish ? spanishReprints[card.id] ?? [] : [];
+  const reprint = spanishImageBackups[reprintId];
   // Basic Water Energy printings are interchangeable for deck construction.
   const alternateImage = card.key === 'water'
     ? 'https://assets.tcgdex.net/' + (spanish ? 'es' : 'en') + '/xy/xy1/134'
     : undefined;
-  const spanishImages = spanish ? [card.es?.image, backup?.image, alternateImage].filter(Boolean) : [];
+  const spanishImages = spanish ? [card.es?.image, backup?.image, reprint?.image, alternateImage].filter(Boolean) : [];
   return {
-    name: (spanish && (card.es?.name || backup?.name || (alternateImage && 'Energía Agua'))) || card.name,
+    name: (spanish && (card.es?.name || backup?.name || reprint?.name || (alternateImage && 'Energía Agua'))) || card.name,
     image: card.image,
     spanish,
     spanishImages,
     alternateImage,
+    reprint,
+    reprintEdition,
     source: backup?.source ?? card.source
   };
+}
+
+function imageNotice(card, url) {
+  if (usesImage(card.reprint?.image, url)) return 'Imagen de otra edición en español · ' + card.reprintEdition;
+  return needsEnglishImageNotice(card, url) ? 'Imagen en inglés' : '';
 }
 
 function cardCategory(card) {
@@ -148,8 +160,8 @@ function renderCatalog() {
     const imageLabel = el('small', summary +
       (translated.spanish && !translated.spanishImages.length && translated.image ? ' · Imagen en inglés' : ''));
     image.onload = () => {
-      imageLabel.textContent = summary +
-        (needsEnglishImageNotice(translated, image.src) ? ' · Imagen en inglés' : '');
+      const notice = imageNotice(translated, image.src);
+      imageLabel.textContent = notice ? summary + ' · ' + notice : summary;
       if (usesImage(translated.alternateImage, image.src) &&
           !usesImage(card.es?.image, image.src) && !usesImage(card.image, image.src)) {
         image.title = 'Imagen de otra impresión de Energía Agua básica (XY1-134)';
@@ -189,12 +201,14 @@ function openCardDetail(card) {
   $('card-detail-meta').textContent = cardCategory(card) + ' · ' + card.id + ' · Máx. ' + card.max;
   const languageNote = $('card-detail-language');
   languageNote.textContent = '';
-  image.onload = () => {
-    languageNote.textContent = needsEnglishImageNotice(translated, image.src) ? 'Imagen disponible en inglés.' : '';
-  };
-  $('card-detail-source').replaceChildren(...(translated.source
-    ? [el('a', 'Consultar la carta original ↗', {href: translated.source, target: '_blank', rel: 'noopener'})]
+  const showSource = source => $('card-detail-source').replaceChildren(...(source
+    ? [el('a', 'Consultar la edición mostrada ↗', {href: source, target: '_blank', rel: 'noopener'})]
     : []));
+  showSource(translated.source);
+  image.onload = () => {
+    languageNote.textContent = imageNotice(translated, image.src);
+    if (usesImage(translated.reprint?.image, image.src)) showSource(translated.reprint.source);
+  };
   imageArea.replaceChildren(image);
   setCardImage(image, translated, 'high', () =>
     image.replaceWith(el('span', 'Imagen no disponible', {class: 'placeholder'})));
@@ -327,12 +341,13 @@ async function loadProxyImage(card) {
   const urls = new Set([...imageOptions(card, 'high'), ...imageOptions(card, 'low')]);
   for (const url of urls) {
     const english = needsEnglishImageNotice(card, url);
-    const backup = spanishImageBackups[card.id]?.image;
-    const localSpanish = url === backup && !url.includes('wikidexcdn.net');
+    const imageId = usesImage(card.reprint?.image, url) ? spanishReprints[card.id][0] : card.id;
+    const backup = spanishImageBackups[imageId]?.image;
+    const localSpanish = url === backup && /limitlesstcg\.nyc3\.cdn|tiendaslevelup\.cl/.test(url);
     const localEnglish = !usesImage(backup, url) &&
       (card.id === 'mcd16-4' || card.id === 'sm3.5-58') && url === card.image;
     const source = localSpanish || localEnglish
-      ? './assets/pdf/' + card.id + (localSpanish ? '-es.jpg' : '-en.jpg')
+      ? './assets/pdf/' + imageId + (localSpanish ? '-es.jpg' : '-en.jpg')
       : url;
     try {
       const response = await fetch(source, {signal: AbortSignal.timeout(8000)});

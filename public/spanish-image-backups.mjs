@@ -1,5 +1,24 @@
 // Spanish card images verified by expansion and collector number.
+export const spanishReprints = {
+  '2024sv-9': ['swshp-SWSH129', 'Promo Espada y Escudo SWSH129'],
+  'base2-19': ['base2-3', 'Jungla 3/64'],
+  'base4-104': ['base1-75', 'Base Set 75/102'],
+  'base4-112': ['base1-83', 'Base Set 83/102'],
+  'dp5-81': ['dp1-106', 'Diamante & Perla 106/130'],
+  'ecard1-141': ['dp1-106', 'Diamante & Perla 106/130'],
+  'ex1-81': ['dp1-106', 'Diamante & Perla 106/130'],
+  'ex3-83': ['pl4-84', 'Arceus 84/99'],
+  'ex6-100': ['xy4-109', 'Fuerzas Fantasmales 109/119'],
+  'ex15-72': ['pl4-84', 'Arceus 84/99'],
+  'pl3-140': ['xy4-109', 'Fuerzas Fantasmales 109/119'],
+};
+
 export const spanishImageBackups = {
+  "swshp-SWSH129": {
+    "image": "https://assets.tcgdex.net/es/swsh/swshp/SWSH129",
+    "name": "Umbreon",
+    "source": "https://www.wikidex.net/wiki/Umbreon_(SWSH_Promo_129_TCG)"
+  },
   "base1-75": {
     "image": "https://images.wikidexcdn.net/mwuploads/wikidex/6/60/latest/20171108212626/Chica_%28Base_Set_TCG%29.png",
     "name": "Chica",

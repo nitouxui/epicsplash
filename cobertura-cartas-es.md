@@ -77,6 +77,20 @@
 | VS Seeker | `ex6-100`, `pl3-140` |
 | Windstorm | `ex14-85` |
 
+## Reimpresiones en español utilizables
+
+Hay **112 impresiones** que aún requieren una imagen en español utilizable. De las 124 sin escaneo oficial exacto, 11 pueden mostrar una edición oficial equivalente y una tiene un proxy traducido. El Deckbuilder mantiene el ID de la impresión seleccionada y señala la edición cuya imagen usa en español.
+
+| Impresión de origen | Imagen oficial en español |
+|---|---|
+| `2024sv-9` | Umbreon · Promo Espada y Escudo SWSH129 |
+| `base2-19` | Flareon · Jungla 3/64 |
+| `base4-104` | Chica · Base Set 75/102 |
+| `base4-112` | Mantenimiento · Base Set 83/102 |
+| `dp5-81`, `ecard1-141`, `ex1-81` | Recuperar energía · Diamante & Perla 106/130 |
+| `ex3-83`, `ex15-72` | Parachoques · Arceus 84/99 |
+| `ex6-100`, `pl3-140` | Buscapelea · Fuerzas Fantasmales 109/119 |
+
 ## Proxy traducido
 
 Magikarp 4/12 de McDonald’s 2016 (`mcd16-4`) tiene un proxy con el ataque en español, marcado como traducción no oficial. La impresión original en español sigue pendiente y se mantiene en el recuento.

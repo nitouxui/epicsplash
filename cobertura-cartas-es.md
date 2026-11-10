@@ -2,7 +2,7 @@
 
 ## Catálogo actual · 9 de noviembre de 2026
 
-**Faltan imágenes en español para 129 de 364 impresiones** (71 nombres de carta). El conteo usa el catálogo del Deckbuilder, las imágenes declaradas por TCGdex en español y los respaldos del proyecto. Excluye Energía Agua básica, cartas de Pocket y el token. Se cuentan impresiones por separado porque una misma carta puede tener varias ediciones.
+**Faltan imágenes en español para 124 de 364 impresiones** (70 nombres de carta). El conteo usa el catálogo del Deckbuilder, las imágenes declaradas por TCGdex en español y los respaldos del proyecto. Excluye Energía Agua básica, cartas de Pocket y el token. Se cuentan impresiones por separado porque una misma carta puede tener varias ediciones.
 
 | Carta | Impresiones sin imagen en español |
 |---|---|
@@ -12,7 +12,7 @@
 | Blaine's Last Resort | `gym1-105` |
 | Blaine's Quiz #2 | `gym2-111` |
 | Brock | `gym1-15`, `gym1-98` |
-| Buffer Piece | `ex15-72`, `ex3-83`, `pl4-84` |
+| Buffer Piece | `ex15-72`, `ex3-83` |
 | Chaos Gym | `gym2-102` |
 | Computer Error | `basep-16` |
 | Counterattack Claws | `neo4-97` |
@@ -25,19 +25,19 @@
 | Dual Ball | `ecard1-139`, `ex11-89`, `ex14-78`, `ex4-72` |
 | Energy Amplifier | `neo4-98` |
 | Energy Charge | `ex8-86` |
-| Energy Restore | `dp5-81`, `ecard1-141`, `ex1-81`, `pl4-86` |
+| Energy Restore | `dp5-81`, `ecard1-141`, `ex1-81` |
 | Energy Root | `ex10-83` |
 | Erika's Perfume | `gym1-110` |
 | Espeon | `dp5-18`, `ecard2-11`, `ecard2-H09`, `ex2-16`, `neo2-1`, `neo2-20` |
 | Espeon ex | `mep-108` |
 | Espeon δ | `ex11-4` |
-| Flareon | `base2-19`, `dp5-19`, `ecard3-8`, `ecard3-H07`, `ex2-5`, `lc-10`, `pl2-19`, `pop3-2` |
+| Flareon | `base2-19`, `dp5-19`, `ecard3-8`, `ecard3-H07`, `ex2-5`, `lc-10`, `pl2-19` |
 | Flareon δ | `ex11-5` |
 | Glaceon | `dp5-20`, `dp5-5`, `pl2-41` |
 | High Pressure System | `ex3-85`, `pop3-10` |
 | Holon Circle | `ex14-79` |
 | Impostor Professor Oak's Invention | `neo4-94` |
-| Jolteon | `dp5-23`, `ecard3-13`, `ecard3-H12`, `ex2-6`, `lc-14`, `pl2-26`, `pop3-3` |
+| Jolteon | `dp5-23`, `ecard3-13`, `ecard3-H12`, `ex2-6`, `lc-14`, `pl2-26` |
 | Jolteon δ | `ex11-7` |
 | Lass | `base4-104` |
 | Leafeon | `dp5-24`, `dp5-7`, `pl2-45` |
@@ -57,7 +57,6 @@
 | Mystery Plate γ | `ecard3-135` |
 | Mystery Plate δ | `ecard3-136` |
 | Old Rod | `ex15-78`, `neo3-64` |
-| Pokémon Catcher | `me06-129` |
 | Pokémon Reversal | `ecard1-146`, `ex1-87`, `ex10-88`, `ex6-97` |
 | Power Charge | `ecard1-147` |
 | Power Tree | `ex12-76` |
@@ -77,6 +76,18 @@
 | Vaporeon δ | `ex11-18` |
 | VS Seeker | `ex6-100`, `pl3-140` |
 | Windstorm | `ex14-85` |
+
+## Barrido adicional en WikiDex
+
+Se cruzaron las 129 impresiones con las fichas de WikiDex. Se pudo abrir la ficha correspondiente a 109 impresiones. Se revisaron visualmente 102 archivos candidatos, incluidos 88 de expansiones antiguas. Las fichas sin imagen exacta o sin acceso siguen pendientes.
+
+Se incorporaron cinco imágenes verificadas:
+
+- [Capturapokémon · me06-129](https://www.wikidex.net/wiki/Capturapok%C3%A9mon_(TCG))
+- [Parachoques · pl4-84](https://www.wikidex.net/wiki/Parachoques_(TCG))
+- [Recuperar energía · pl4-86](https://www.wikidex.net/wiki/Recuperar_energ%C3%ADa_(TCG))
+- [Flareon · pop3-2](https://www.wikidex.net/wiki/Flareon_(POP_Serie_3_TCG))
+- [Jolteon · pop3-3](https://www.wikidex.net/wiki/Jolteon_(POP_Serie_3_TCG))
 
 ## Barrido de las 130 impresiones
 

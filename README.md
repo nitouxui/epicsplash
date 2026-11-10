@@ -16,7 +16,7 @@ Ejecuta `python3 -m http.server 8000 --directory public` y abre [localhost:8000]
 
 Los visitantes ven las barajas y próximos torneos publicados. Cada editor gestiona sus propias publicaciones. Las reglas de Firestore validan identidad, propiedad y estructura, y el deckbuilder valida la composición al publicar desde la interfaz.
 
-Los torneos usan el huso de Santiago de Chile. Si el cambio de hora duplica una hora local, se usa la primera ocurrencia. La impresión usa A4 con 9 proxies por página, a 63 × 88 mm. Selecciona escala 100 % y desactiva encabezados y pies de página.
+Los torneos usan el huso de Santiago de Chile. Si el cambio de hora duplica una hora local, se usa la primera ocurrencia. La descarga genera un PDF A4 con hasta 9 proxies por página, a 63 × 88 mm. Al imprimir el PDF, selecciona escala 100 %.
 
 ## Catálogo
 

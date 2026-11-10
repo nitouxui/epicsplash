@@ -46,7 +46,7 @@ let deck = {};
 const draftKey = isAdminPath ? 'epic-admin-deck' : 'epic-deck';
 let temporaryDeck = false;
 let limit = 24;
-let printing = false;
+let preparingPDF = false;
 let detailCardId;
 let basicWaterId;
 const previews = new Map();
@@ -220,9 +220,9 @@ function change(id, difference) {
   render();
 }
 
-function canPrint() {
+function canDownloadPDF() {
   const {total} = status(deck, cards);
-  return !printing && (total >= 1 || $('include-break-token').checked) &&
+  return !preparingPDF && (total >= 1 || $('include-break-token').checked) &&
     total <= 60 && Object.keys(deck).every(id => cards.has(id));
 }
 
@@ -309,7 +309,7 @@ function render() {
   const addWater = $('add-basic-water');
   addWater.hidden = !basicWaterId;
   addWater.disabled = !canAdd(deck, cards, basicWaterId);
-  $('print').disabled = !canPrint();
+  $('print').disabled = !canDownloadPDF();
   renderCatalog();
   updateCardDetail();
 }
@@ -322,10 +322,43 @@ $('clear').onclick = () => { if (!Object.keys(deck).length || confirm('¿Vaciar 
 for (const id of ['search', 'category', 'language']) $(id).addEventListener('input', () => { limit = 24; render(); });
 $('more').onclick = () => { limit += 24; renderCatalog(); };
 $('deck-view').onchange = render;
-$('include-break-token').onchange = () => { $('print').disabled = !canPrint(); };
+$('include-break-token').onchange = () => { $('print').disabled = !canDownloadPDF(); };
+async function loadProxyImage(card) {
+  const urls = new Set([...imageOptions(card, 'high'), ...imageOptions(card, 'low')]);
+  for (const url of urls) {
+    const english = needsEnglishImageNotice(card, url);
+    const backup = spanishImageBackups[card.id]?.image;
+    const localSpanish = url === backup && !url.includes('wikidexcdn.net');
+    const localEnglish = !usesImage(backup, url) &&
+      (card.id === 'mcd16-4' || card.id === 'sm3.5-58') && url === card.image;
+    const source = localSpanish || localEnglish
+      ? './assets/pdf/' + card.id + (localSpanish ? '-es.jpg' : '-en.jpg')
+      : url;
+    try {
+      const response = await fetch(source, {signal: AbortSignal.timeout(8000)});
+      if (!response.ok) continue;
+      const bitmap = await createImageBitmap(await response.blob());
+      const canvas = document.createElement('canvas');
+      canvas.width = 430;
+      canvas.height = 600;
+      const context = canvas.getContext('2d');
+      context.fillStyle = '#fff';
+      context.fillRect(0, 0, canvas.width, canvas.height);
+      if (card.landscape) {
+        context.translate(0, canvas.height);
+        context.rotate(-Math.PI / 2);
+        context.drawImage(bitmap, 0, 0, canvas.height, canvas.width);
+      } else context.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+      bitmap.close();
+      return {data: canvas.toDataURL('image/jpeg', .92), english};
+    } catch { /* Try the next source. */ }
+  }
+  throw new Error(card.name);
+}
+
 $('print').onclick = async () => {
-  if (!canPrint()) return;
-  const selected = Object.entries(deck).flatMap(([id, n]) => Array(n).fill(localized(cards.get(id))));
+  if (!canDownloadPDF()) return;
+  const selected = Object.entries(deck).flatMap(([id, n]) => Array(n).fill({id, ...localized(cards.get(id))}));
   if ($('include-break-token').checked) {
     selected.push({
       name: 'Token de Magikarp BREAK',
@@ -334,41 +367,45 @@ $('print').onclick = async () => {
     });
   }
   const note = $('print-status');
-  const sheets = $('print-sheet');
-  const missingImages = selected.filter(card => !imageOptions(card, 'high').length);
-  if (missingImages.length) {
-    note.textContent = 'Faltan imágenes para: ' + [...new Set(missingImages.map(card => card.name))].join(', ');
-    return;
-  }
-  printing = true;
+  preparingPDF = true;
   $('print').disabled = true;
-  note.textContent = 'Preparando imágenes…';
+  note.textContent = 'Preparando imágenes para el PDF…';
   try {
-    sheets.replaceChildren();
-    const downloads = [];
-    for (let i = 0; i < selected.length; i += 9) {
-      const page = el('div', null, {class: 'print-page'});
-      for (const card of selected.slice(i, i + 9)) {
-        const image = el('img', null, {alt: card.name});
-        if (card.landscape) image.classList.add('print-landscape');
-        page.append(image);
-        downloads.push(new Promise((resolve, reject) => {
-          image.onload = () => resolve(needsEnglishImageNotice(card, image.src));
-          setCardImage(image, card, 'high', () => reject(new Error(card.name)));
-        }));
-      }
-      sheets.append(page);
-    }
-    const englishImages = await Promise.race([
-      Promise.all(downloads),
-      new Promise((_, reject) => setTimeout(() => reject(new Error('tiempo de espera agotado')), 30000))
+    const unique = [...new Set(selected)];
+    const [{jsPDF}, results] = await Promise.all([
+      import('https://cdn.jsdelivr.net/npm/jspdf@4.2.0/+esm'),
+      Promise.allSettled(unique.map(loadProxyImage))
     ]);
-    note.textContent = 'Imprime al 100 %, sin encabezados ni pies de página.';
-    if (!englishImages.includes(true) || confirm('Algunas cartas tienen imagen en inglés. ¿Imprimir las imágenes disponibles?')) {
-      window.print();
+    const missing = unique.filter((_, index) => results[index].status === 'rejected');
+    if (missing.length) throw new Error('faltan imágenes para ' + [...new Set(missing.map(card => card.name))].join(', '));
+    if (results.some(result => result.value.english) &&
+        !confirm('Algunas cartas solo tienen imagen disponible en inglés. ¿Descargar el PDF con esas imágenes?')) {
+      note.textContent = 'Descarga cancelada.';
+      return;
     }
-  } catch (error) { note.textContent = 'No se pudo preparar la impresión: ' + error.message + '.'; }
-  finally { sheets.replaceChildren(); printing = false; $('print').disabled = !canPrint(); }
+    const images = new Map(unique.map((card, index) => [card, {index, ...results[index].value}]));
+    const pdf = new jsPDF({unit: 'mm', format: 'a4', compress: true});
+    pdf.setProperties({title: 'Epic Splash · Proxies'});
+    selected.forEach((card, index) => {
+      const position = index % 9;
+      if (index && !position) pdf.addPage();
+      const x = 10.5 + (position % 3) * 63;
+      const y = 7 + Math.floor(position / 3) * 88;
+      const image = images.get(card);
+      pdf.addImage(image.data, 'JPEG', x, y, 63, 88, 'card-' + image.index);
+      pdf.setDrawColor(68);
+      pdf.setLineWidth(.15);
+      pdf.setLineDashPattern([1, .8], 0);
+      pdf.rect(x, y, 63, 88);
+    });
+    pdf.save('epic-splash-proxies.pdf');
+    note.textContent = 'PDF descargado. Para conservar el tamaño de las cartas, imprime al 100 %.';
+  } catch (error) {
+    note.textContent = 'No se pudo preparar el PDF: ' + error.message + '.';
+  } finally {
+    preparingPDF = false;
+    $('print').disabled = !canDownloadPDF();
+  }
 };
 
 function applyCatalog(result) {

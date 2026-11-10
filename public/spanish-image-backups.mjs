@@ -1,5 +1,9 @@
 // Spanish card images verified by expansion and collector number.
 export const spanishReprints = {
+  'ecard1-146': ['hgss1-99', 'HeartGold & SoulSilver 99/123'],
+  'ex1-87': ['hgss1-99', 'HeartGold & SoulSilver 99/123'],
+  'ex10-88': ['hgss1-99', 'HeartGold & SoulSilver 99/123'],
+  'ex6-97': ['hgss1-99', 'HeartGold & SoulSilver 99/123'],
   'ecard1-139': ['hgss2-72', 'Liberados 72/95'],
   'ex11-89': ['hgss2-72', 'Liberados 72/95'],
   'ex14-78': ['hgss2-72', 'Liberados 72/95'],

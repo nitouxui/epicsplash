@@ -79,7 +79,7 @@
 
 ## Reimpresiones en español utilizables
 
-Hay **108 impresiones** que aún requieren una imagen en español utilizable. De las 124 sin escaneo oficial exacto, 15 pueden mostrar una edición oficial equivalente y una tiene un proxy traducido. El Deckbuilder mantiene el ID de la impresión seleccionada y señala la edición cuya imagen usa en español.
+Hay **104 impresiones** que aún requieren una imagen en español utilizable. De las 124 sin escaneo oficial exacto, 19 pueden mostrar una edición oficial equivalente y una tiene un proxy traducido. El Deckbuilder mantiene el ID de la impresión seleccionada y señala la edición cuya imagen usa en español.
 
 | Impresión de origen | Imagen oficial en español |
 |---|---|
@@ -91,6 +91,7 @@ Hay **108 impresiones** que aún requieren una imagen en español utilizable. De
 | `ex3-83`, `ex15-72` | Parachoques · Arceus 84/99 |
 | `ex6-100`, `pl3-140` | Buscapelea · Fuerzas Fantasmales 109/119 |
 | `ecard1-139`, `ex11-89`, `ex14-78`, `ex4-72` | Dual Ball · Liberados 72/95 |
+| `ecard1-146`, `ex1-87`, `ex10-88`, `ex6-97` | Revés Pokémon · HeartGold & SoulSilver 99/123 |
 
 ## Proxy traducido
 

@@ -1,5 +1,9 @@
 // Spanish card images verified by expansion and collector number.
 export const spanishReprints = {
+  'ecard1-139': ['hgss2-72', 'Liberados 72/95'],
+  'ex11-89': ['hgss2-72', 'Liberados 72/95'],
+  'ex14-78': ['hgss2-72', 'Liberados 72/95'],
+  'ex4-72': ['hgss2-72', 'Liberados 72/95'],
   '2024sv-9': ['swshp-SWSH129', 'Promo Espada y Escudo SWSH129'],
   'base2-19': ['base2-3', 'Jungla 3/64'],
   'base4-104': ['base1-75', 'Base Set 75/102'],

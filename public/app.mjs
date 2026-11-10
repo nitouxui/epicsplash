@@ -1,6 +1,6 @@
 import { $, el, button } from './ui.mjs';
 import { catalog, cardPreview } from './catalog.mjs?v=3';
-import { canAdd, magikarp, normalize, status } from './rules.mjs';
+import { canAdd, magikarp, normalize, species, status } from './rules.mjs';
 import { connect } from './cloud.mjs?v=10';
 import { spanishImageBackups, spanishReprints } from './spanish-image-backups.mjs?v=12';
 
@@ -143,7 +143,9 @@ function renderCatalog() {
     return;
   }
   const category = $('category').value;
+  const familySearch = species.some(name => normalize(name) === query);
   const matching = [...cards.values()].filter(card => card.key !== 'water' && (!category || cardCategory(card) === category) &&
+    (!familySearch || / ex$/i.test(card.name)) &&
     [card.name, localized(card).name, card.id].some(value => normalize(value).includes(query)));
   $('catalog').replaceChildren(...matching.slice(0, limit).map(card => {
     const translated = localized(card);

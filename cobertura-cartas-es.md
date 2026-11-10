@@ -96,6 +96,8 @@ Hay **100 impresiones** que aún requieren una imagen en español utilizable. De
 
 La edición `np-26` usa directamente la [foto verificada de Viento Tropical](https://www.ebay.com/itm/266430778047).
 
+La búsqueda comunitaria se centra en **47 impresiones**. Las variantes regulares de las evoluciones de Eevee quedan fuera de la búsqueda de imágenes, y las Pokémon ex siguen incluidas. Al buscar el nombre de una evolución en el Deckbuilder se muestran sus versiones ex.
+
 ## Proxy traducido
 
 Magikarp 4/12 de McDonald’s 2016 (`mcd16-4`) tiene un proxy con el ataque en español, marcado como traducción no oficial. La impresión original en español sigue pendiente y se mantiene en el recuento.

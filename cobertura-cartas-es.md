@@ -77,6 +77,10 @@
 | VS Seeker | `ex6-100`, `pl3-140` |
 | Windstorm | `ex14-85` |
 
+## Proxy traducido
+
+Magikarp 4/12 de McDonald’s 2016 (`mcd16-4`) tiene un proxy con el ataque en español, marcado como traducción no oficial. La impresión original en español sigue pendiente y se mantiene en el recuento.
+
 ## Barrido adicional en WikiDex
 
 Se cruzaron las 129 impresiones con las fichas de WikiDex. Se pudo abrir la ficha correspondiente a 109 impresiones. Se revisaron visualmente 102 archivos candidatos, incluidos 88 de expansiones antiguas. Las fichas sin imagen exacta o sin acceso siguen pendientes.

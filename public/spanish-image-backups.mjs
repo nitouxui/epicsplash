@@ -204,6 +204,11 @@ export const spanishImageBackups = {
     "image": "https://limitlesstcg.nyc3.cdn.digitaloceanspaces.com/tpci/HSP/HSP_018_R_ES.png",
     "source": "https://limitlesstcg.com/cards/es/HSP/18"
   },
+  "mcd16-4": {
+    "image": "./assets/pdf/mcd16-4-es.jpg",
+    "name": "Magikarp",
+    "source": "https://pkmncards.com/card/magikarp-mcdonalds-collection-2016-mcd16-4/"
+  },
   "me06-129": {
     "image": "https://images.wikidexcdn.net/mwuploads/wikidex/d/dd/latest/20261105233522/Capturapok%C3%A9mon_%28Dominio_Delta_ES_TCG%29.png",
     "name": "Capturapokémon",

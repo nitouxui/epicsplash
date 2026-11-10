@@ -1,5 +1,8 @@
 // Spanish card images verified by expansion and collector number.
 export const spanishReprints = {
+  'dpp-DP05': ['np-26', 'Nintendo Black Star Promo 026 · Mundial 2004'],
+  'dpp-DP25': ['np-26', 'Nintendo Black Star Promo 026 · Mundial 2004'],
+  'dpp-DP48': ['np-26', 'Nintendo Black Star Promo 026 · Mundial 2004'],
   'ecard1-146': ['hgss1-99', 'HeartGold & SoulSilver 99/123'],
   'ex1-87': ['hgss1-99', 'HeartGold & SoulSilver 99/123'],
   'ex10-88': ['hgss1-99', 'HeartGold & SoulSilver 99/123'],
@@ -22,6 +25,11 @@ export const spanishReprints = {
 };
 
 export const spanishImageBackups = {
+  "np-26": {
+    "image": "https://i.ebayimg.com/images/g/nBwAAOSwzNxlFdbo/s-l1200.jpg",
+    "name": "Viento Tropical",
+    "source": "https://www.ebay.com/itm/266430778047"
+  },
   "swshp-SWSH129": {
     "image": "https://assets.tcgdex.net/es/swsh/swshp/SWSH129",
     "name": "Umbreon",

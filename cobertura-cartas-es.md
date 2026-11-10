@@ -79,7 +79,7 @@
 
 ## Reimpresiones en español utilizables
 
-Hay **104 impresiones** que aún requieren una imagen en español utilizable. De las 124 sin escaneo oficial exacto, 19 pueden mostrar una edición oficial equivalente y una tiene un proxy traducido. El Deckbuilder mantiene el ID de la impresión seleccionada y señala la edición cuya imagen usa en español.
+Hay **100 impresiones** que aún requieren una imagen en español utilizable. De las 124 sin escaneo oficial exacto, 22 pueden mostrar una edición oficial equivalente, una tiene una foto verificada de su propia edición y una tiene un proxy traducido. El Deckbuilder mantiene el ID de la impresión seleccionada y señala la edición cuya imagen usa en español.
 
 | Impresión de origen | Imagen oficial en español |
 |---|---|
@@ -92,6 +92,9 @@ Hay **104 impresiones** que aún requieren una imagen en español utilizable. De
 | `ex6-100`, `pl3-140` | Buscapelea · Fuerzas Fantasmales 109/119 |
 | `ecard1-139`, `ex11-89`, `ex14-78`, `ex4-72` | Dual Ball · Liberados 72/95 |
 | `ecard1-146`, `ex1-87`, `ex10-88`, `ex6-97` | Revés Pokémon · HeartGold & SoulSilver 99/123 |
+| `dpp-DP05`, `dpp-DP25`, `dpp-DP48` | Viento Tropical · Nintendo Black Star Promo 026 (Mundial 2004) |
+
+La edición `np-26` usa directamente la [foto verificada de Viento Tropical](https://www.ebay.com/itm/266430778047).
 
 ## Proxy traducido
 
